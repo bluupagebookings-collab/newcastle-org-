@@ -52,26 +52,26 @@ export default function App() {
               <nav className="hidden lg:flex items-center gap-5 xl:gap-7">
                 <a className="relative text-xs font-bold tracking-wider transition-colors duration-300 group text-navy/90 hover:text-navy" href="#about">
                   ABOUT
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-brand-teal to-brand-blue transition-all duration-300 group-hover:w-full"></span>
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-teal transition-all duration-300 group-hover:w-full"></span>
                 </a>
                 <a className="relative text-xs font-bold tracking-wider transition-colors duration-300 group text-navy/90 hover:text-navy" href="#pillars">
                   PILLARS
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-brand-teal to-brand-blue transition-all duration-300 group-hover:w-full"></span>
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-teal transition-all duration-300 group-hover:w-full"></span>
                 </a>
                 <a className="relative text-xs font-bold tracking-wider transition-colors duration-300 group text-navy/90 hover:text-navy" href="#programs">
                   PROGRAMS
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-brand-teal to-brand-blue transition-all duration-300 group-hover:w-full"></span>
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-teal transition-all duration-300 group-hover:w-full"></span>
                 </a>
                 <a className="relative text-xs font-bold tracking-wider transition-colors duration-300 group text-navy/90 hover:text-navy" href="#events">
                   EVENTS
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-brand-teal to-brand-blue transition-all duration-300 group-hover:w-full"></span>
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-teal transition-all duration-300 group-hover:w-full"></span>
                 </a>
                 <a className="relative text-xs font-bold tracking-wider transition-colors duration-300 group text-navy/90 hover:text-navy" href="#volunteer">
                   VOLUNTEER
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-brand-teal to-brand-blue transition-all duration-300 group-hover:w-full"></span>
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-teal transition-all duration-300 group-hover:w-full"></span>
                 </a>
               </nav>
-              <a className="hidden lg:block px-6 xl:px-8 py-2.5 bg-gradient-to-r from-brand-teal via-brand-blue to-brand-teal-dark text-dark-800 font-bold text-xs tracking-wider rounded-full hover:shadow-lg hover:shadow-brand-teal/30 transition-all duration-300 hover:scale-105 uppercase" href="#donate">
+              <a className="hidden lg:block px-6 xl:px-8 py-2.5 bg-brand-teal text-white font-bold text-xs tracking-wider rounded-none hover:bg-navy transition-colors duration-300 uppercase" href="#donate">
                 Donate
               </a>
               <button 
@@ -97,113 +97,67 @@ export default function App() {
             <a href="#programs" onClick={() => setIsMobileMenuOpen(false)} className="text-xs font-bold tracking-wider text-navy py-2 border-b border-gray-100">PROGRAMS</a>
             <a href="#events" onClick={() => setIsMobileMenuOpen(false)} className="text-xs font-bold tracking-wider text-navy py-2 border-b border-gray-100">EVENTS</a>
             <a href="#volunteer" onClick={() => setIsMobileMenuOpen(false)} className="text-xs font-bold tracking-wider text-navy py-2 border-b border-gray-100">VOLUNTEER</a>
-            <a href="#donate" onClick={() => setIsMobileMenuOpen(false)} className="text-xs font-bold tracking-wider text-white bg-gradient-to-r from-brand-teal to-brand-blue text-center py-3 rounded-md mt-2 uppercase">DONATE</a>
+            <a href="#donate" onClick={() => setIsMobileMenuOpen(false)} className="text-xs font-bold tracking-wider text-white bg-brand-teal text-center py-3 rounded-none mt-2 uppercase">DONATE</a>
           </motion.div>
         )}
       </header>
 
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="relative pt-28 pb-16 lg:pt-36 lg:pb-24 overflow-hidden bg-white">
-          {/* Background decorative elements */}
-          <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
-            <div className="absolute -top-[10%] -right-[10%] w-[70%] h-[70%] rounded-full bg-brand-teal/5 blur-3xl"></div>
-            <div className="absolute top-[40%] -left-[10%] w-[50%] h-[50%] rounded-full bg-brand-blue/5 blur-3xl"></div>
+        <section className="relative h-[100svh] min-h-[600px] overflow-hidden bg-navy">
+          <div className="absolute inset-0 bg-navy">
+            {heroImages.map((src, idx) => (
+              <img
+                key={src}
+                alt={`Hero slide ${idx + 1}`}
+                className={`object-cover object-center w-full h-full absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                  idx === currentSlide ? 'opacity-50' : 'opacity-0'
+                }`}
+                src={src}
+                referrerPolicy="no-referrer"
+              />
+            ))}
           </div>
-
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="flex flex-row items-center justify-between gap-4 lg:gap-8">
-              
-              {/* Text Content */}
+          <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/40 to-transparent z-10"></div>
+          
+          <div className="absolute inset-0 z-20 flex items-center justify-center pt-16 sm:pt-20">
+            <div className="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-20">
               <motion.div 
                 initial="hidden"
                 animate="visible"
                 variants={staggerContainer}
-                className="w-[55%] lg:w-1/2 flex flex-col justify-center text-left pt-0"
+                className="max-w-4xl"
               >
-                <motion.div variants={fadeUp} className="flex items-center justify-start gap-2 sm:gap-3 mb-3 sm:mb-6">
-                  <span className="px-2 sm:px-4 py-1 sm:py-1.5 rounded-full bg-brand-teal/10 text-brand-teal-dark text-[8px] sm:text-xs font-bold tracking-widest uppercase border border-brand-teal/20">
+                <motion.div variants={fadeUp} className="flex items-center gap-3 mb-5 sm:mb-6">
+                  <div className="w-8 sm:w-12 h-px bg-brand-teal"></div>
+                  <span className="text-brand-teal text-[10px] sm:text-xs font-bold tracking-[0.25em] uppercase">
                     Newcastle, KZN
                   </span>
                 </motion.div>
-                
-                <motion.h1 variants={fadeUp} className="text-[20px] leading-[1.1] sm:text-5xl lg:text-6xl xl:text-7xl font-black text-navy tracking-tight sm:leading-[1.05] uppercase mb-3 sm:mb-6">
-                  Keep Newcastle <br className="hidden sm:block lg:hidden xl:block" />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-teal to-brand-blue">
-                    Alive With
-                  </span> <br className="hidden sm:block lg:hidden xl:block" />
-                  Possibilities
-                </motion.h1>
-                
-                <motion.p variants={fadeUp} className="text-navy/70 text-[10px] sm:text-lg max-w-xl mx-0 leading-relaxed font-medium mb-5 sm:mb-10 line-clamp-3 sm:line-clamp-none">
-                  A new community movement dedicated to uplifting lives, unlocking opportunities, and bringing people together through meaningful events.
+                <motion.div variants={fadeUp} className="overflow-hidden mb-4 sm:mb-6">
+                  <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white tracking-tight leading-[1.05] sm:leading-[1] uppercase">
+                    KEEP NEWCASTLE ALIVE WITH POSSIBILITIES
+                  </h1>
+                </motion.div>
+                <motion.p variants={fadeUp} className="text-white/80 text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed font-light mb-8 sm:mb-10">
+                  A new community movement dedicated to uplifting lives, unlocking opportunities, and bringing people together through meaningful events, support, and empowerment programs.
                 </motion.p>
-                
-                <motion.div variants={fadeUp} className="flex flex-col sm:flex-row items-start sm:items-center justify-start gap-2 sm:gap-4 w-full sm:w-auto">
-                  <a className="group relative inline-flex items-center justify-center gap-2 sm:gap-3 px-4 sm:px-8 py-2.5 sm:py-4 bg-navy text-white font-bold text-[9px] sm:text-sm uppercase tracking-wider rounded-full overflow-hidden w-full sm:w-auto transition-all hover:shadow-xl hover:shadow-navy/20" href="#donate">
-                    <div className="absolute inset-0 bg-gradient-to-r from-brand-teal to-brand-blue opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <span className="relative z-10 flex items-center gap-1 sm:gap-2">
-                      Support <span className="hidden sm:inline">Our Mission</span>
-                      <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
-                    </span>
+                <motion.div variants={fadeUp} className="flex flex-wrap gap-3 sm:gap-4">
+                  <a className="group inline-flex items-center justify-center gap-3 px-7 sm:px-9 py-3.5 sm:py-4 bg-brand-teal text-white font-bold text-xs sm:text-sm uppercase tracking-wider rounded-none hover:bg-white hover:text-navy transition-colors duration-300 w-fit" href="#donate">
+                    Support Our Mission
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </a>
-                  <a className="inline-flex items-center justify-center gap-2 sm:gap-3 px-4 sm:px-8 py-2.5 sm:py-4 bg-white text-navy border-2 border-navy/10 font-bold text-[9px] sm:text-sm uppercase tracking-wider rounded-full hover:border-brand-teal hover:text-brand-teal transition-colors duration-300 w-full sm:w-auto" href="#volunteer">
-                    Volunteer
+                  <a className="inline-flex items-center justify-center gap-3 px-7 sm:px-9 py-3.5 sm:py-4 border border-white/30 text-white font-bold text-xs sm:text-sm uppercase tracking-wider rounded-none hover:border-white hover:bg-white/10 transition-colors duration-300 w-fit" href="#volunteer">
+                    Become a Volunteer
                   </a>
                 </motion.div>
               </motion.div>
-
-              {/* Image/Visual Content */}
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                className="w-[45%] lg:w-1/2 relative lg:pl-10 mt-0"
-              >
-                {/* Main Image Container */}
-                <div className="relative aspect-[3/4] sm:aspect-[4/3] lg:aspect-[4/5] rounded-2xl sm:rounded-[2rem] overflow-hidden shadow-2xl shadow-navy/10 border border-navy/5">
-                  {heroImages.map((src, idx) => (
-                    <img
-                      key={src}
-                      alt={`Hero slide ${idx + 1}`}
-                      className={`object-cover object-center w-full h-full absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                        idx === currentSlide ? 'opacity-100' : 'opacity-0'
-                      }`}
-                      src={src}
-                      referrerPolicy="no-referrer"
-                    />
-                  ))}
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy/40 to-transparent"></div>
-                </div>
-
-                {/* Floating Glassmorphic Card */}
-                <motion.div 
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.8 }}
-                  className="absolute -bottom-3 -left-3 sm:-bottom-8 sm:-left-8 lg:-left-12 bg-white/90 backdrop-blur-xl p-2 sm:p-6 rounded-xl sm:rounded-2xl shadow-xl border border-white/50 w-[110px] sm:w-auto sm:max-w-[280px]"
-                >
-                  <div className="flex items-center gap-1.5 sm:gap-4 mb-1 sm:mb-3">
-                    <div className="flex -space-x-2 sm:-space-x-3">
-                      <img className="w-5 h-5 sm:w-10 sm:h-10 rounded-full border sm:border-2 border-white object-cover" src="https://i.ibb.co/BHJyftPV/1772021833601.jpg" alt="Member" />
-                      <div className="w-5 h-5 sm:w-10 sm:h-10 rounded-full border sm:border-2 border-white bg-brand-teal flex items-center justify-center text-white text-[7px] sm:text-xs font-bold">+50</div>
-                    </div>
-                  </div>
-                  <p className="text-navy font-bold text-[7px] sm:text-sm leading-tight">
-                    Join our growing community.
-                  </p>
-                </motion.div>
-                
-                {/* Decorative Dots */}
-                <div className="absolute -top-6 -right-6 w-24 h-24 bg-[radial-gradient(circle,var(--color-brand-teal)_2px,transparent_2px)] [background-size:12px_12px] opacity-20 -z-10 hidden sm:block"></div>
-              </motion.div>
-
             </div>
           </div>
         </section>
 
         {/* About Section */}
-        <section id="about" className="relative bg-cream overflow-hidden py-12 sm:py-24 lg:py-32">
+        <section id="about" className="relative bg-cream overflow-hidden py-16 sm:py-24 lg:py-32">
           <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-16">
             <motion.div 
               initial="hidden"
@@ -221,8 +175,6 @@ export default function App() {
                     referrerPolicy="no-referrer"
                   />
                 </div>
-                <div className="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 w-32 sm:w-48 h-32 sm:h-48 border-2 border-brand-teal/30 -z-10"></div>
-                <div className="absolute -top-4 -left-4 sm:-top-6 sm:-left-6 w-16 sm:w-24 h-16 sm:h-24 bg-brand-teal/10 -z-10"></div>
               </motion.div>
               
               <motion.div variants={fadeUp} className="lg:col-span-6 lg:col-start-7">
@@ -295,7 +247,7 @@ export default function App() {
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
               variants={staggerContainer}
-              className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6"
+              className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12"
             >
               {[
                 {
@@ -408,11 +360,11 @@ export default function App() {
                 <motion.div 
                   key={idx} 
                   variants={fadeUp} 
-                  className={`p-6 sm:p-10 rounded-2xl border ${program.active ? 'bg-[#faf8f5] border-brand-teal/30' : 'bg-white border-gray-100'}`}
+                  className={`p-6 sm:p-10 rounded-none border ${program.active ? 'bg-[#faf8f5] border-brand-teal/30' : 'bg-white border-gray-100'}`}
                 >
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 mb-4 sm:mb-6">
                     <h4 className="text-lg sm:text-xl font-black text-dark-800 uppercase tracking-wide">{program.title}</h4>
-                    <span className={`text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full w-fit ${program.active ? 'bg-brand-teal text-dark-900' : 'bg-gray-100 text-gray-500'}`}>
+                    <span className={`text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-none w-fit ${program.active ? 'bg-navy text-white' : 'bg-gray-100 text-gray-500'}`}>
                       {program.status}
                     </span>
                   </div>
@@ -487,7 +439,7 @@ export default function App() {
                 whileInView="visible"
                 viewport={{ once: true, margin: "-100px" }}
                 variants={fadeUp}
-                className="relative aspect-[4/5] sm:aspect-square lg:aspect-[4/5] rounded-2xl overflow-hidden mt-8 lg:mt-0"
+                className="relative aspect-[4/5] sm:aspect-square lg:aspect-[4/5] rounded-none overflow-hidden"
               >
                 <img 
                   alt="Community Event" 
@@ -597,7 +549,7 @@ export default function App() {
                 </motion.div>
 
                 <motion.div variants={fadeUp}>
-                  <a className="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-navy text-white font-bold text-xs uppercase tracking-wider hover:bg-brand-teal hover:text-dark-900 transition-colors duration-300 w-full sm:w-auto" href="#contact">
+                  <a className="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-navy text-white font-bold text-xs uppercase tracking-wider hover:bg-brand-teal hover:text-dark-900 transition-colors duration-300 w-fit" href="#contact">
                     Join The Movement
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </a>
@@ -608,6 +560,70 @@ export default function App() {
         </section>
       </main>
 
+        {/* News & Updates Section */}
+        <section id="news" className="py-16 sm:py-24 lg:py-32 bg-white">
+          <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16">
+            <motion.div 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={staggerContainer}
+              className="mb-12 sm:mb-16"
+            >
+              <motion.div variants={fadeUp} className="flex items-center gap-3 mb-4">
+                <div className="w-8 sm:w-12 h-px bg-brand-teal"></div>
+                <span className="text-brand-teal font-bold tracking-[0.25em] text-[9px] sm:text-[10px] uppercase">
+                  Latest News
+                </span>
+              </motion.div>
+              <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl lg:text-5xl font-black text-dark-800 leading-[1.05] uppercase">
+                NEWS & <span className="text-brand-teal">UPDATES</span>
+              </motion.h2>
+            </motion.div>
+
+            <motion.div 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={fadeUp}
+              className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start"
+            >
+              <div className="relative aspect-[4/3] lg:aspect-auto lg:h-full min-h-[300px] overflow-hidden rounded-none">
+                <img 
+                  src="https://i.ibb.co/BHJyftPV/1772021833601.jpg" 
+                  alt="Sphe Dlamini" 
+                  className="object-cover object-top w-full h-full absolute inset-0"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+              <div className="flex flex-col justify-center py-4 lg:py-8">
+                <span className="text-brand-teal text-[10px] font-bold uppercase tracking-[0.2em] mb-3 block">
+                  Press Release • Feb 2026
+                </span>
+                <h3 className="text-2xl sm:text-3xl font-black text-navy leading-tight mb-4 uppercase">
+                  Sphe Dlamini Launches KNAWP
+                </h3>
+                <div className="text-navy/70 text-sm sm:text-base leading-relaxed space-y-4">
+                  <p>
+                    In a significant step forward for the community of Newcastle, local visionary Sphe Dlamini has officially announced the launch of Keep Newcastle Alive With Possibilities (KNAWP). This new initiative aims to bridge the gap between potential and opportunity for residents across the region.
+                  </p>
+                  <p>
+                    Recognising the untapped talent and the pressing need for structured support systems, Dlamini established KNAWP to serve as a catalyst for positive change. The organisation will focus on three core areas: community events that foster unity, support initiatives for those facing hardship, and empowerment programs designed to build essential life and career skills.
+                  </p>
+                  <p>
+                    "Our goal is not just to provide temporary relief, but to build sustainable pathways to success for everyone in Newcastle," Dlamini stated during the inaugural address. The movement is already gathering momentum, with local volunteers and community leaders stepping forward to contribute to the vision.
+                  </p>
+                </div>
+                <div className="mt-8">
+                  <a href="#contact" className="inline-flex items-center gap-2 text-brand-teal font-bold text-xs uppercase tracking-wider hover:text-navy transition-colors">
+                    Read More <ArrowRight className="w-4 h-4" />
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
       {/* Footer */}
       <footer id="contact" className="relative overflow-hidden bg-dark-950">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -616,7 +632,7 @@ export default function App() {
         </div>
         
         <div className="relative">
-          <div className="bg-gradient-to-r from-brand-teal via-brand-blue to-brand-teal-dark py-10 sm:py-14 md:py-16">
+          <div className="bg-brand-teal py-10 sm:py-14 md:py-16">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-12">
                 <div className="text-center lg:text-left">
