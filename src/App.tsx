@@ -16,15 +16,12 @@ export default function App() {
   ];
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroImages.length);
-    }, 5000);
-    return () => clearInterval(timer);
+    // Hero slider removed to keep the website solid and stable
   }, []);
 
   const fadeUp = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 0.6, ease: "easeOut" } }
   };
 
   const staggerContainer = {
@@ -38,9 +35,9 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col font-sans selection:bg-brand-teal selection:text-dark-900">
+    <div className="min-h-screen flex flex-col font-sans selection:bg-brand-teal selection:text-dark-900 overflow-x-hidden w-full relative">
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-white/95 backdrop-blur-lg border-b border-navy/10">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-navy/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20 sm:h-24">
             <div className="flex items-center">
@@ -586,9 +583,9 @@ export default function App() {
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
               variants={fadeUp}
-              className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start"
+              className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center"
             >
-              <div className="relative aspect-[4/3] lg:aspect-auto lg:h-full min-h-[300px] overflow-hidden rounded-none">
+              <div className="relative aspect-[4/5] sm:aspect-square lg:aspect-[4/5] overflow-hidden rounded-none shadow-lg">
                 <img 
                   src="https://i.ibb.co/BHJyftPV/1772021833601.jpg" 
                   alt="Sphe Dlamini" 
