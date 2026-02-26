@@ -168,7 +168,7 @@ export default function App() {
                   <img 
                     alt="Sphe Dlamini, Founder" 
                     className="object-cover object-top w-full h-full transition-all duration-700" 
-                    src="https://i.ibb.co/BHJyftPV/1772021833601.jpg"
+                    src="https://i.ibb.co/ksHdb78G/IMG-5383-2.jpg"
                     referrerPolicy="no-referrer"
                   />
                 </div>
@@ -458,6 +458,105 @@ export default function App() {
           </div>
         </section>
 
+        {/* Request Assistance Section */}
+        <section id="assistance" className="py-16 sm:py-24 lg:py-32 bg-navy relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-brand-teal/10 rounded-full blur-[120px] pointer-events-none"></div>
+          <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-16 relative z-10">
+            <motion.div 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={staggerContainer}
+              className="mb-10 sm:mb-12 text-center"
+            >
+              <motion.div variants={fadeUp} className="flex items-center justify-center gap-3 mb-4">
+                <div className="w-8 sm:w-12 h-px bg-brand-teal"></div>
+                <span className="text-brand-teal font-bold tracking-[0.25em] text-[9px] sm:text-[10px] uppercase">
+                  We Are Here For You
+                </span>
+                <div className="w-8 sm:w-12 h-px bg-brand-teal"></div>
+              </motion.div>
+              <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-[1.05] uppercase mb-4">
+                REQUEST <span className="text-brand-teal">ASSISTANCE</span>
+              </motion.h2>
+              <motion.p variants={fadeUp} className="text-white/70 text-sm sm:text-base max-w-xl mx-auto">
+                If you or someone you know in Newcastle needs support, please fill out the form below. Our team will review your request and get in touch.
+              </motion.p>
+            </motion.div>
+
+            <motion.form 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={fadeUp}
+              className="bg-white p-6 sm:p-10 rounded-none shadow-2xl space-y-5 sm:space-y-6"
+              onSubmit={(e) => { e.preventDefault(); alert('Request submitted successfully. We will be in touch soon.'); }}
+            >
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+                <div className="space-y-2">
+                  <label htmlFor="firstName" className="text-[10px] font-bold uppercase tracking-wider text-navy block">Name</label>
+                  <input type="text" id="firstName" required className="w-full bg-cream border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal transition-colors" placeholder="Enter your name" />
+                </div>
+                <div className="space-y-2">
+                  <label htmlFor="lastName" className="text-[10px] font-bold uppercase tracking-wider text-navy block">Surname</label>
+                  <input type="text" id="lastName" required className="w-full bg-cream border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal transition-colors" placeholder="Enter your surname" />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+                <div className="space-y-2">
+                  <label htmlFor="email" className="text-[10px] font-bold uppercase tracking-wider text-navy block">Email Address</label>
+                  <input type="email" id="email" required className="w-full bg-cream border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal transition-colors" placeholder="Enter your email" />
+                </div>
+                <div className="space-y-2">
+                  <label htmlFor="age" className="text-[10px] font-bold uppercase tracking-wider text-navy block">Age</label>
+                  <input type="number" id="age" min="0" max="120" required className="w-full bg-cream border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal transition-colors" placeholder="Enter your age" />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <label htmlFor="location" className="text-[10px] font-bold uppercase tracking-wider text-navy block">Location in Newcastle (KZN)</label>
+                <select id="location" required defaultValue="" className="w-full bg-cream border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal transition-colors appearance-none">
+                  <option value="" disabled>Select your neighborhood / township</option>
+                  <option value="Amajuba Park">Amajuba Park</option>
+                  <option value="Arbor Park">Arbor Park</option>
+                  <option value="Aviary Hill">Aviary Hill</option>
+                  <option value="Barry Hertzog Park">Barry Hertzog Park</option>
+                  <option value="Blaauwbosch">Blaauwbosch</option>
+                  <option value="Fairleigh">Fairleigh</option>
+                  <option value="Fernwood">Fernwood</option>
+                  <option value="Hutten Heights">Hutten Heights</option>
+                  <option value="Karabos">Karabos</option>
+                  <option value="Lennoxton">Lennoxton</option>
+                  <option value="Madadeni">Madadeni</option>
+                  <option value="Ncandu Park">Ncandu Park</option>
+                  <option value="Newcastle Central">Newcastle Central</option>
+                  <option value="Osizweni">Osizweni</option>
+                  <option value="Paradise">Paradise</option>
+                  <option value="Pioneer Park">Pioneer Park</option>
+                  <option value="Roy Point">Roy Point</option>
+                  <option value="Schuins Hoogte">Schuins Hoogte</option>
+                  <option value="Signal Hill">Signal Hill</option>
+                  <option value="Siyahlala-la">Siyahlala-la</option>
+                  <option value="Sunnyridge">Sunnyridge</option>
+                  <option value="Sunset View">Sunset View</option>
+                  <option value="Suryaville">Suryaville</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
+              <div className="space-y-2">
+                <label htmlFor="brief" className="text-[10px] font-bold uppercase tracking-wider text-navy block">Short Brief (How can we help?)</label>
+                <textarea id="brief" rows={4} required className="w-full bg-cream border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal transition-colors resize-none" placeholder="Please describe the assistance you need..."></textarea>
+              </div>
+
+              <button type="submit" className="w-full bg-brand-teal text-white font-bold text-xs uppercase tracking-wider py-4 hover:bg-navy transition-colors duration-300">
+                Submit Request
+              </button>
+            </motion.form>
+          </div>
+        </section>
+
         {/* Donation & Volunteer Section */}
         <section id="donate" className="relative overflow-hidden">
           <div className="grid lg:grid-cols-2">
@@ -587,7 +686,7 @@ export default function App() {
             >
               <div className="relative aspect-[4/5] sm:aspect-square lg:aspect-[4/5] overflow-hidden rounded-none shadow-lg">
                 <img 
-                  src="https://i.ibb.co/BHJyftPV/1772021833601.jpg" 
+                  src="https://i.ibb.co/ksHdb78G/IMG-5383-2.jpg" 
                   alt="Sphe Dlamini" 
                   className="object-cover object-top w-full h-full absolute inset-0"
                   referrerPolicy="no-referrer"
