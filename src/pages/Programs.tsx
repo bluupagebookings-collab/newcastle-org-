@@ -66,7 +66,7 @@ export default function Programs() {
       <PageHero title="Programs" subtitle="Empowering Newcastle" image="https://i.ibb.co/XfB6zrvd/Reskill-Group-Huddle.jpg" />
 
       <main className="flex-grow py-16 sm:py-24 lg:py-32">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16">
           <motion.div 
             initial="hidden"
             whileInView="visible"
@@ -74,7 +74,7 @@ export default function Programs() {
             variants={staggerContainer}
             className="mb-16 sm:mb-20 text-center"
           >
-            <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl lg:text-5xl font-black text-dark-800 leading-[1.05] uppercase">
+            <motion.h2 variants={fadeUp} className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-dark-800 leading-[1.05] uppercase break-words">
               BUILDING FUTURES <span className="text-brand-teal">ACROSS NEWCASTLE</span>
             </motion.h2>
             <motion.p variants={fadeUp} className="text-dark-800/60 mt-6 max-w-2xl mx-auto text-lg">
@@ -106,14 +106,14 @@ export default function Programs() {
                 
                 <div className="mb-4">
                   <span className="text-brand-teal text-[10px] font-bold uppercase tracking-wider mb-2 block">{program.category}</span>
-                  <h3 className="text-2xl font-black text-dark-800 uppercase tracking-wide">{program.title}</h3>
+                  <h3 className="text-xl sm:text-2xl font-black text-dark-800 uppercase tracking-wide break-words">{program.title}</h3>
                 </div>
                 
                 <p className="text-base text-dark-800/70 leading-relaxed flex-grow mb-8">
                   {program.desc}
                 </p>
                 
-                <div className="grid grid-cols-2 gap-4 pt-6 border-t border-gray-200/60 mt-auto">
+                <div className="grid grid-cols-1 xs:grid-cols-2 gap-4 pt-6 border-t border-gray-200/60 mt-auto">
                   <div>
                     <span className="block text-[10px] text-dark-800/40 font-bold uppercase tracking-wider mb-1">Duration</span>
                     <span className="block text-sm font-medium text-dark-800">{program.duration}</span>
@@ -136,7 +136,7 @@ export default function Programs() {
           >
             <div className="absolute top-0 right-0 w-64 h-64 bg-brand-teal/20 rounded-full blur-[80px]"></div>
             <div className="relative z-10">
-              <h3 className="text-2xl sm:text-3xl font-black text-white uppercase mb-4">Want to facilitate a program?</h3>
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-white uppercase mb-4 break-words">Want to facilitate a program?</h3>
               <p className="text-white/70 max-w-2xl mx-auto mb-8">
                 We are always looking for skilled professionals, teachers, and mentors in Newcastle who want to give back by leading or assisting with our programs.
               </p>

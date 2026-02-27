@@ -25,7 +25,7 @@ export default function About() {
       <main className="flex-grow">
         {/* Founder Section */}
         <section className="py-16 sm:py-24 lg:py-32 bg-white">
-          <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16">
             <motion.div 
               initial="hidden"
               whileInView="visible"
@@ -56,7 +56,7 @@ export default function About() {
                     A Movement Born in Newcastle
                   </span>
                 </div>
-                <h2 className="text-3xl xl:text-5xl font-black text-dark-800 mb-8 leading-[1.05] uppercase">
+                <h2 className="text-2xl sm:text-3xl xl:text-5xl font-black text-dark-800 mb-6 sm:mb-8 leading-[1.05] uppercase break-words">
                   EVERY RESIDENT DESERVES
                   <br />
                   <span className="text-brand-teal">ACCESS TO OPPORTUNITY</span>
@@ -87,7 +87,7 @@ export default function About() {
           <div className="absolute top-0 right-0 w-96 h-96 bg-brand-teal/10 rounded-full blur-[120px]"></div>
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-brand-teal/10 rounded-full blur-[120px]"></div>
           
-          <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
             <motion.div 
               initial="hidden"
               whileInView="visible"
@@ -97,7 +97,7 @@ export default function About() {
             >
               <motion.div variants={fadeUp} className="bg-white/5 border border-white/10 p-8 sm:p-12 rounded-3xl backdrop-blur-sm">
                 <Target className="w-12 h-12 text-brand-teal mb-6" />
-                <h3 className="text-2xl sm:text-3xl font-black uppercase mb-4">Our Mission</h3>
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-black uppercase mb-4">Our Mission</h3>
                 <p className="text-white/70 leading-relaxed text-lg">
                   To actively bridge the gap between potential and opportunity in Newcastle by providing accessible skills training, essential welfare support, and inclusive community events that foster unity and growth.
                 </p>
@@ -105,7 +105,7 @@ export default function About() {
               
               <motion.div variants={fadeUp} className="bg-white/5 border border-white/10 p-8 sm:p-12 rounded-3xl backdrop-blur-sm">
                 <Eye className="w-12 h-12 text-brand-teal mb-6" />
-                <h3 className="text-2xl sm:text-3xl font-black uppercase mb-4">Our Vision</h3>
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-black uppercase mb-4">Our Vision</h3>
                 <p className="text-white/70 leading-relaxed text-lg">
                   A thriving, self-sustaining Newcastle where every individual has the resources, confidence, and community backing to achieve their dreams and contribute meaningfully to society.
                 </p>
@@ -116,7 +116,7 @@ export default function About() {
 
         {/* Core Values */}
         <section className="py-16 sm:py-24 lg:py-32 bg-cream">
-          <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16">
             <motion.div 
               initial="hidden"
               whileInView="visible"
@@ -124,7 +124,7 @@ export default function About() {
               variants={staggerContainer}
               className="text-center mb-16"
             >
-              <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl lg:text-5xl font-black text-dark-800 uppercase">
+              <motion.h2 variants={fadeUp} className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-dark-800 uppercase break-words">
                 Our Core <span className="text-brand-teal">Values</span>
               </motion.h2>
               <motion.p variants={fadeUp} className="mt-4 text-dark-800/60 max-w-2xl mx-auto">

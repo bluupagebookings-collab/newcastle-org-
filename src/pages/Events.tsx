@@ -23,7 +23,7 @@ export default function Events() {
       <PageHero title="Events" subtitle="Upcoming Gatherings" image="https://i.ibb.co/Pzc82WVY/1771954802701.jpg" />
 
       <main className="flex-grow py-16 sm:py-24 lg:py-32">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             
             {/* Events List */}
@@ -34,7 +34,7 @@ export default function Events() {
               variants={staggerContainer}
               className="lg:col-span-7"
             >
-              <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-black text-dark-800 mb-4 leading-[1.05] uppercase">
+              <motion.h2 variants={fadeUp} className="text-2xl sm:text-3xl md:text-4xl font-black text-dark-800 mb-4 leading-[1.05] uppercase break-words">
                 WHAT'S HAPPENING
                 <br />
                 <span className="text-brand-teal">IN NEWCASTLE</span>
@@ -58,7 +58,7 @@ export default function Events() {
                         <span className="px-2.5 py-1 bg-brand-teal/10 text-brand-teal text-[9px] font-bold uppercase tracking-wider rounded">Community</span>
                         <span className="px-2.5 py-1 bg-navy/10 text-navy text-[9px] font-bold uppercase tracking-wider rounded">Free Entry</span>
                       </div>
-                      <h3 className="font-black text-dark-800 text-xl sm:text-2xl mb-3 uppercase group-hover:text-brand-teal transition-colors">
+                      <h3 className="font-black text-dark-800 text-lg sm:text-xl md:text-2xl mb-3 uppercase group-hover:text-brand-teal transition-colors break-words">
                         KNAWP First Community Event
                       </h3>
                       <p className="text-dark-800/60 text-sm mb-5 leading-relaxed">
@@ -119,7 +119,7 @@ export default function Events() {
                   <span className="px-3 py-1.5 bg-brand-teal text-white text-[10px] font-bold uppercase tracking-widest inline-block mb-4 rounded shadow-sm">
                     Featured Event
                   </span>
-                  <h3 className="text-3xl font-black text-white uppercase mb-3 leading-tight">
+                  <h3 className="text-2xl sm:text-3xl font-black text-white uppercase mb-3 leading-tight break-words">
                     First Community Event
                   </h3>
                   <p className="text-white/80 text-sm mb-6 leading-relaxed">Be part of history as we launch KNAWP and bring the Newcastle community together for the first time.</p>

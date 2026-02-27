@@ -18,7 +18,7 @@ export default function PageHero({ title, subtitle, image }: PageHeroProps) {
       )}
       <div className="absolute top-0 right-0 w-96 h-96 bg-brand-teal/10 rounded-full blur-[120px] pointer-events-none"></div>
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-brand-teal/10 rounded-full blur-[120px] pointer-events-none"></div>
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16 relative z-10 text-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16 relative z-10 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -31,7 +31,7 @@ export default function PageHero({ title, subtitle, image }: PageHeroProps) {
             </span>
             <div className="w-8 sm:w-12 h-px bg-brand-teal"></div>
           </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black text-white uppercase tracking-tight">
+          <h1 className="text-3xl sm:text-5xl lg:text-7xl font-black text-white uppercase tracking-tight break-words">
             {title}
           </h1>
         </motion.div>

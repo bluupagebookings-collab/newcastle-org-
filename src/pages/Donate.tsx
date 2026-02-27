@@ -22,7 +22,7 @@ export default function Donate() {
       <PageHero title="Donate" subtitle="Fuel The Movement" image="https://i.ibb.co/0yBNCPCP/rnb-gathering-1772031387245.png" />
 
       <main className="flex-grow py-16 sm:py-24 lg:py-32">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16">
           
           {/* Intro */}
           <motion.div 
@@ -32,7 +32,7 @@ export default function Donate() {
             variants={staggerContainer}
             className="text-center mb-16 sm:mb-24"
           >
-            <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-[1.05] uppercase">
+            <motion.h2 variants={fadeUp} className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white leading-[1.05] uppercase break-words">
               YOUR SUPPORT <span className="text-brand-teal">STARTS SOMETHING</span>
             </motion.h2>
             <motion.p variants={fadeUp} className="text-white/60 mt-6 max-w-2xl mx-auto text-lg">
@@ -104,7 +104,7 @@ export default function Donate() {
               variants={fadeUp}
               className="lg:col-span-5 bg-white rounded-3xl p-8 sm:p-10 shadow-2xl"
             >
-              <h3 className="text-2xl font-black text-dark-800 uppercase mb-2">How to Donate</h3>
+              <h3 className="text-xl sm:text-2xl font-black text-dark-800 uppercase mb-2 break-words">How to Donate</h3>
               <p className="text-dark-800/60 text-sm mb-8">Our online payment gateway is currently being set up. In the meantime, you can support us via direct bank transfer.</p>
 
               <div className="bg-cream rounded-2xl p-6 border border-gray-200 mb-8">

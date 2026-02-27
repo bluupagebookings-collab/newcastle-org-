@@ -56,7 +56,7 @@ export default function Pillars() {
       <PageHero title="Our Pillars" subtitle="The Foundation of KNAWP" image="https://i.ibb.co/Hfb2j30m/rnb-gathering-1772031343356.png" />
 
       <main className="flex-grow py-16 sm:py-24 lg:py-32">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16">
           <motion.div 
             initial="hidden"
             whileInView="visible"
@@ -64,7 +64,7 @@ export default function Pillars() {
             variants={staggerContainer}
             className="mb-16 sm:mb-24 text-center"
           >
-            <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl lg:text-5xl font-black text-dark-800 leading-[1.05] max-w-3xl mx-auto uppercase">
+            <motion.h2 variants={fadeUp} className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-dark-800 leading-[1.05] max-w-3xl mx-auto uppercase break-words">
               THREE PILLARS OF <span className="text-brand-teal">CHANGE</span>
             </motion.h2>
             <motion.p variants={fadeUp} className="text-dark-800/60 mt-6 max-w-2xl mx-auto text-lg">
@@ -103,7 +103,7 @@ export default function Pillars() {
                       {pillar.subtitle}
                     </span>
                   </div>
-                  <h3 className="text-3xl sm:text-4xl font-black text-dark-800 mb-6 uppercase">
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-dark-800 mb-4 sm:mb-6 uppercase break-words">
                     {pillar.title}
                   </h3>
                   <p className="text-dark-800/70 text-lg leading-relaxed mb-8">
