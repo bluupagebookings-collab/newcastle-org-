@@ -3,13 +3,64 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight, MapPin, Mail, Phone, Heart, Calendar, CheckCircle2, Menu, X } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function App() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    age: '',
+    location: '',
+    brief: ''
+  });
+  const [formErrors, setFormErrors] = useState<Record<string, string>>({});
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({ ...prev, [id]: value }));
+    if (formErrors[id]) {
+      setFormErrors(prev => ({ ...prev, [id]: '' }));
+    }
+  };
+
+  const validateForm = () => {
+    const errors: Record<string, string> = {};
+    if (!formData.firstName.trim()) errors.firstName = "Name is required";
+    if (!formData.lastName.trim()) errors.lastName = "Surname is required";
+    if (!formData.email.trim()) {
+      errors.email = "Email is required";
+    } else if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
+      errors.email = "Please enter a valid email address";
+    }
+    if (!formData.age) {
+      errors.age = "Age is required";
+    } else if (isNaN(Number(formData.age)) || Number(formData.age) <= 0 || Number(formData.age) > 120) {
+      errors.age = "Please enter a valid age between 1 and 120";
+    }
+    if (!formData.location) errors.location = "Please select a location";
+    if (!formData.brief.trim()) errors.brief = "Please provide a short brief";
+    
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
+  const handleAssistanceSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (validateForm()) {
+      setSubmitSuccess(true);
+      setFormData({ firstName: '', lastName: '', email: '', age: '', location: '', brief: '' });
+      setTimeout(() => setSubmitSuccess(false), 5000);
+    }
+  };
+
   const heroImages = [
     "https://i.ibb.co/0yBNCPCP/rnb-gathering-1772031387245.png",
     "https://i.ibb.co/Hfb2j30m/rnb-gathering-1772031343356.png"
@@ -41,36 +92,36 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20 sm:h-24">
             <div className="flex items-center">
-              <a className="flex items-center gap-1.5" href="/">
+              <Link className="flex items-center gap-1.5" to="/">
                 <img src="https://i.ibb.co/WpRMjw7K/1771954845123.jpg" alt="KNAWP Logo" className="h-10 sm:h-12 w-auto rounded-md" referrerPolicy="no-referrer" />
-              </a>
+              </Link>
             </div>
             <div className="flex items-center gap-6 xl:gap-10">
               <nav className="hidden lg:flex items-center gap-5 xl:gap-7">
-                <a className="relative text-xs font-bold tracking-wider transition-colors duration-300 group text-navy/90 hover:text-navy" href="#about">
+                <Link className="relative text-xs font-bold tracking-wider transition-colors duration-300 group text-navy/90 hover:text-navy" to="/about">
                   ABOUT
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-teal transition-all duration-300 group-hover:w-full"></span>
-                </a>
-                <a className="relative text-xs font-bold tracking-wider transition-colors duration-300 group text-navy/90 hover:text-navy" href="#pillars">
+                </Link>
+                <Link className="relative text-xs font-bold tracking-wider transition-colors duration-300 group text-navy/90 hover:text-navy" to="/pillars">
                   PILLARS
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-teal transition-all duration-300 group-hover:w-full"></span>
-                </a>
-                <a className="relative text-xs font-bold tracking-wider transition-colors duration-300 group text-navy/90 hover:text-navy" href="#programs">
+                </Link>
+                <Link className="relative text-xs font-bold tracking-wider transition-colors duration-300 group text-navy/90 hover:text-navy" to="/programs">
                   PROGRAMS
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-teal transition-all duration-300 group-hover:w-full"></span>
-                </a>
-                <a className="relative text-xs font-bold tracking-wider transition-colors duration-300 group text-navy/90 hover:text-navy" href="#events">
+                </Link>
+                <Link className="relative text-xs font-bold tracking-wider transition-colors duration-300 group text-navy/90 hover:text-navy" to="/events">
                   EVENTS
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-teal transition-all duration-300 group-hover:w-full"></span>
-                </a>
-                <a className="relative text-xs font-bold tracking-wider transition-colors duration-300 group text-navy/90 hover:text-navy" href="#volunteer">
+                </Link>
+                <Link className="relative text-xs font-bold tracking-wider transition-colors duration-300 group text-navy/90 hover:text-navy" to="/volunteer">
                   VOLUNTEER
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-teal transition-all duration-300 group-hover:w-full"></span>
-                </a>
+                </Link>
               </nav>
-              <a className="hidden lg:block px-6 xl:px-8 py-2.5 bg-brand-teal text-white font-bold text-xs tracking-wider rounded-none hover:bg-navy transition-colors duration-300 uppercase" href="#donate">
+              <Link className="hidden lg:block px-6 xl:px-8 py-2.5 bg-brand-teal text-white font-bold text-xs tracking-wider rounded-none hover:bg-navy transition-colors duration-300 uppercase" to="/donate">
                 Donate
-              </a>
+              </Link>
               <button 
                 className="lg:hidden p-2 text-navy hover:text-brand-teal transition-colors"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -89,12 +140,12 @@ export default function App() {
             animate={{ opacity: 1, y: 0 }}
             className="lg:hidden absolute top-full left-0 right-0 bg-white border-b border-navy/10 shadow-xl py-4 px-6 flex flex-col gap-4"
           >
-            <a href="#about" onClick={() => setIsMobileMenuOpen(false)} className="text-xs font-bold tracking-wider text-navy py-2 border-b border-gray-100">ABOUT</a>
-            <a href="#pillars" onClick={() => setIsMobileMenuOpen(false)} className="text-xs font-bold tracking-wider text-navy py-2 border-b border-gray-100">PILLARS</a>
-            <a href="#programs" onClick={() => setIsMobileMenuOpen(false)} className="text-xs font-bold tracking-wider text-navy py-2 border-b border-gray-100">PROGRAMS</a>
-            <a href="#events" onClick={() => setIsMobileMenuOpen(false)} className="text-xs font-bold tracking-wider text-navy py-2 border-b border-gray-100">EVENTS</a>
-            <a href="#volunteer" onClick={() => setIsMobileMenuOpen(false)} className="text-xs font-bold tracking-wider text-navy py-2 border-b border-gray-100">VOLUNTEER</a>
-            <a href="#donate" onClick={() => setIsMobileMenuOpen(false)} className="text-xs font-bold tracking-wider text-white bg-brand-teal text-center py-3 rounded-none mt-2 uppercase">DONATE</a>
+            <Link to="/about" onClick={() => setIsMobileMenuOpen(false)} className="text-xs font-bold tracking-wider text-navy py-2 border-b border-gray-100">ABOUT</Link>
+            <Link to="/pillars" onClick={() => setIsMobileMenuOpen(false)} className="text-xs font-bold tracking-wider text-navy py-2 border-b border-gray-100">PILLARS</Link>
+            <Link to="/programs" onClick={() => setIsMobileMenuOpen(false)} className="text-xs font-bold tracking-wider text-navy py-2 border-b border-gray-100">PROGRAMS</Link>
+            <Link to="/events" onClick={() => setIsMobileMenuOpen(false)} className="text-xs font-bold tracking-wider text-navy py-2 border-b border-gray-100">EVENTS</Link>
+            <Link to="/volunteer" onClick={() => setIsMobileMenuOpen(false)} className="text-xs font-bold tracking-wider text-navy py-2 border-b border-gray-100">VOLUNTEER</Link>
+            <Link to="/donate" onClick={() => setIsMobileMenuOpen(false)} className="text-xs font-bold tracking-wider text-white bg-brand-teal text-center py-3 rounded-none mt-2 uppercase">DONATE</Link>
           </motion.div>
         )}
       </header>
@@ -490,33 +541,44 @@ export default function App() {
               viewport={{ once: true, margin: "-100px" }}
               variants={fadeUp}
               className="bg-white p-6 sm:p-10 rounded-none shadow-2xl space-y-5 sm:space-y-6"
-              onSubmit={(e) => { e.preventDefault(); alert('Request submitted successfully. We will be in touch soon.'); }}
+              onSubmit={handleAssistanceSubmit}
+              noValidate
             >
+              {submitSuccess && (
+                <div className="bg-brand-teal/10 border border-brand-teal text-brand-teal-dark px-4 py-3 rounded-none text-sm font-medium mb-6">
+                  Request submitted successfully. Our team will review your request and get in touch soon.
+                </div>
+              )}
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
                 <div className="space-y-2">
                   <label htmlFor="firstName" className="text-[10px] font-bold uppercase tracking-wider text-navy block">Name</label>
-                  <input type="text" id="firstName" required className="w-full bg-cream border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal transition-colors" placeholder="Enter your name" />
+                  <input type="text" id="firstName" value={formData.firstName} onChange={handleInputChange} className={`w-full bg-cream border ${formErrors.firstName ? 'border-red-500' : 'border-gray-200'} px-4 py-3 text-sm focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal transition-colors`} placeholder="Enter your name" />
+                  {formErrors.firstName && <p className="text-red-500 text-xs mt-1">{formErrors.firstName}</p>}
                 </div>
                 <div className="space-y-2">
                   <label htmlFor="lastName" className="text-[10px] font-bold uppercase tracking-wider text-navy block">Surname</label>
-                  <input type="text" id="lastName" required className="w-full bg-cream border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal transition-colors" placeholder="Enter your surname" />
+                  <input type="text" id="lastName" value={formData.lastName} onChange={handleInputChange} className={`w-full bg-cream border ${formErrors.lastName ? 'border-red-500' : 'border-gray-200'} px-4 py-3 text-sm focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal transition-colors`} placeholder="Enter your surname" />
+                  {formErrors.lastName && <p className="text-red-500 text-xs mt-1">{formErrors.lastName}</p>}
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
                 <div className="space-y-2">
                   <label htmlFor="email" className="text-[10px] font-bold uppercase tracking-wider text-navy block">Email Address</label>
-                  <input type="email" id="email" required className="w-full bg-cream border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal transition-colors" placeholder="Enter your email" />
+                  <input type="email" id="email" value={formData.email} onChange={handleInputChange} className={`w-full bg-cream border ${formErrors.email ? 'border-red-500' : 'border-gray-200'} px-4 py-3 text-sm focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal transition-colors`} placeholder="Enter your email" />
+                  {formErrors.email && <p className="text-red-500 text-xs mt-1">{formErrors.email}</p>}
                 </div>
                 <div className="space-y-2">
                   <label htmlFor="age" className="text-[10px] font-bold uppercase tracking-wider text-navy block">Age</label>
-                  <input type="number" id="age" min="0" max="120" required className="w-full bg-cream border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal transition-colors" placeholder="Enter your age" />
+                  <input type="number" id="age" min="0" max="120" value={formData.age} onChange={handleInputChange} className={`w-full bg-cream border ${formErrors.age ? 'border-red-500' : 'border-gray-200'} px-4 py-3 text-sm focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal transition-colors`} placeholder="Enter your age" />
+                  {formErrors.age && <p className="text-red-500 text-xs mt-1">{formErrors.age}</p>}
                 </div>
               </div>
 
               <div className="space-y-2">
                 <label htmlFor="location" className="text-[10px] font-bold uppercase tracking-wider text-navy block">Location in Newcastle (KZN)</label>
-                <select id="location" required defaultValue="" className="w-full bg-cream border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal transition-colors appearance-none">
+                <select id="location" value={formData.location} onChange={handleInputChange} className={`w-full bg-cream border ${formErrors.location ? 'border-red-500' : 'border-gray-200'} px-4 py-3 text-sm focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal transition-colors appearance-none`}>
                   <option value="" disabled>Select your neighborhood / township</option>
                   <option value="Amajuba Park">Amajuba Park</option>
                   <option value="Arbor Park">Arbor Park</option>
@@ -543,11 +605,13 @@ export default function App() {
                   <option value="Suryaville">Suryaville</option>
                   <option value="Other">Other</option>
                 </select>
+                {formErrors.location && <p className="text-red-500 text-xs mt-1">{formErrors.location}</p>}
               </div>
 
               <div className="space-y-2">
                 <label htmlFor="brief" className="text-[10px] font-bold uppercase tracking-wider text-navy block">Short Brief (How can we help?)</label>
-                <textarea id="brief" rows={4} required className="w-full bg-cream border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal transition-colors resize-none" placeholder="Please describe the assistance you need..."></textarea>
+                <textarea id="brief" rows={4} value={formData.brief} onChange={handleInputChange} className={`w-full bg-cream border ${formErrors.brief ? 'border-red-500' : 'border-gray-200'} px-4 py-3 text-sm focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal transition-colors resize-none`} placeholder="Please describe the assistance you need..."></textarea>
+                {formErrors.brief && <p className="text-red-500 text-xs mt-1">{formErrors.brief}</p>}
               </div>
 
               <button type="submit" className="w-full bg-brand-teal text-white font-bold text-xs uppercase tracking-wider py-4 hover:bg-navy transition-colors duration-300">
