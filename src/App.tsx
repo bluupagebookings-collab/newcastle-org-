@@ -4,13 +4,26 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { motion } from 'motion/react';
-import { ArrowRight, MapPin, Mail, Phone, Heart, Calendar, CheckCircle2, Menu, X } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { motion, AnimatePresence } from 'motion/react';
+import { ArrowRight, MapPin, Mail, Phone, Heart, Calendar, CheckCircle2, Menu, X, Search, Facebook, Twitter, MessageCircle, Link2 } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
+import Footer from './components/Footer';
 
 export default function App() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const navigate = useNavigate();
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      console.log('Searching for:', searchQuery);
+      setIsSearchOpen(false);
+      setSearchQuery('');
+    }
+  };
 
   const [formData, setFormData] = useState({
     firstName: '',
@@ -118,36 +131,87 @@ export default function App() {
                   VOLUNTEER
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-teal transition-all duration-300 group-hover:w-full"></span>
                 </Link>
+                <Link className="relative text-xs font-bold tracking-wider transition-colors duration-300 group text-navy/90 hover:text-navy" to="/blog">
+                  BLOG
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-teal transition-all duration-300 group-hover:w-full"></span>
+                </Link>
               </nav>
-              <Link className="hidden lg:block px-6 xl:px-8 py-2.5 bg-brand-teal text-white font-bold text-xs tracking-wider rounded-none hover:bg-navy transition-colors duration-300 uppercase" to="/donate">
-                Donate
-              </Link>
-              <button 
-                className="lg:hidden p-2 text-navy hover:text-brand-teal transition-colors"
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                aria-label="Toggle menu"
-              >
-                {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-              </button>
+              <div className="flex items-center gap-2 sm:gap-4">
+                <button 
+                  onClick={() => setIsSearchOpen(!isSearchOpen)}
+                  className="p-2 text-navy hover:text-brand-teal transition-colors"
+                  aria-label="Toggle search"
+                >
+                  <Search className="w-5 h-5 sm:w-6 sm:h-6" />
+                </button>
+
+                <Link className="hidden lg:block px-6 xl:px-8 py-2.5 bg-brand-teal text-white font-bold text-xs tracking-wider rounded-none hover:bg-navy transition-colors duration-300 uppercase" to="/donate">
+                  Donate
+                </Link>
+                <button 
+                  className="lg:hidden p-2 text-navy hover:text-brand-teal transition-colors"
+                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                  aria-label="Toggle menu"
+                >
+                  {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                </button>
+              </div>
             </div>
           </div>
         </div>
 
+        {/* Search Bar Dropdown */}
+        <AnimatePresence>
+          {isSearchOpen && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 'auto', opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              className="overflow-hidden bg-cream border-b border-navy/10"
+            >
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+                <form onSubmit={handleSearch} className="relative flex items-center">
+                  <Search className="absolute left-4 w-5 h-5 text-navy/50" />
+                  <input
+                    type="text"
+                    placeholder="Search for events, blog posts..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full bg-white border border-gray-200 pl-12 pr-4 py-3 text-sm focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal transition-colors"
+                    autoFocus
+                  />
+                  <button 
+                    type="button" 
+                    onClick={() => setIsSearchOpen(false)}
+                    className="absolute right-4 p-1 text-navy/50 hover:text-navy transition-colors"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                </form>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
         {/* Mobile Menu Panel */}
-        {isMobileMenuOpen && (
-          <motion.div 
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="lg:hidden absolute top-full left-0 right-0 bg-white border-b border-navy/10 shadow-xl py-4 px-6 flex flex-col gap-4"
-          >
-            <Link to="/about" onClick={() => setIsMobileMenuOpen(false)} className="text-xs font-bold tracking-wider text-navy py-2 border-b border-gray-100">ABOUT</Link>
-            <Link to="/pillars" onClick={() => setIsMobileMenuOpen(false)} className="text-xs font-bold tracking-wider text-navy py-2 border-b border-gray-100">PILLARS</Link>
-            <Link to="/programs" onClick={() => setIsMobileMenuOpen(false)} className="text-xs font-bold tracking-wider text-navy py-2 border-b border-gray-100">PROGRAMS</Link>
-            <Link to="/events" onClick={() => setIsMobileMenuOpen(false)} className="text-xs font-bold tracking-wider text-navy py-2 border-b border-gray-100">EVENTS</Link>
-            <Link to="/volunteer" onClick={() => setIsMobileMenuOpen(false)} className="text-xs font-bold tracking-wider text-navy py-2 border-b border-gray-100">VOLUNTEER</Link>
-            <Link to="/donate" onClick={() => setIsMobileMenuOpen(false)} className="text-xs font-bold tracking-wider text-white bg-brand-teal text-center py-3 rounded-none mt-2 uppercase">DONATE</Link>
-          </motion.div>
-        )}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div 
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              className="lg:hidden absolute top-full left-0 right-0 bg-white border-b border-navy/10 shadow-xl py-4 px-6 flex flex-col gap-4"
+            >
+              <Link to="/about" onClick={() => setIsMobileMenuOpen(false)} className="text-xs font-bold tracking-wider text-navy py-2 border-b border-gray-100">ABOUT</Link>
+              <Link to="/pillars" onClick={() => setIsMobileMenuOpen(false)} className="text-xs font-bold tracking-wider text-navy py-2 border-b border-gray-100">PILLARS</Link>
+              <Link to="/programs" onClick={() => setIsMobileMenuOpen(false)} className="text-xs font-bold tracking-wider text-navy py-2 border-b border-gray-100">PROGRAMS</Link>
+              <Link to="/events" onClick={() => setIsMobileMenuOpen(false)} className="text-xs font-bold tracking-wider text-navy py-2 border-b border-gray-100">EVENTS</Link>
+              <Link to="/volunteer" onClick={() => setIsMobileMenuOpen(false)} className="text-xs font-bold tracking-wider text-navy py-2 border-b border-gray-100">VOLUNTEER</Link>
+              <Link to="/blog" onClick={() => setIsMobileMenuOpen(false)} className="text-xs font-bold tracking-wider text-navy py-2 border-b border-gray-100">BLOG</Link>
+              <Link to="/donate" onClick={() => setIsMobileMenuOpen(false)} className="text-xs font-bold tracking-wider text-white bg-brand-teal text-center py-3 rounded-none mt-2 uppercase">DONATE</Link>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </header>
 
       <main className="flex-grow">
@@ -183,7 +247,7 @@ export default function App() {
                   </span>
                 </motion.div>
                 <motion.div variants={fadeUp} className="overflow-hidden mb-4 sm:mb-6">
-                  <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white tracking-tight leading-[1.05] sm:leading-[1] uppercase">
+                  <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white tracking-tight leading-[1.05] sm:leading-[1] uppercase break-words">
                     KEEP NEWCASTLE ALIVE WITH POSSIBILITIES
                   </h1>
                 </motion.div>
@@ -232,7 +296,7 @@ export default function App() {
                     A Movement Born in Newcastle
                   </span>
                 </div>
-                <h2 className="text-4xl xl:text-5xl font-black text-dark-800 mb-8 leading-[1.05] uppercase">
+                <h2 className="text-4xl xl:text-5xl font-black text-dark-800 mb-8 leading-[1.05] uppercase break-words">
                   EVERY RESIDENT DESERVES
                   <br />
                   <span className="text-brand-teal">ACCESS TO OPPORTUNITY</span>
@@ -283,7 +347,7 @@ export default function App() {
                   What We Do
                 </span>
               </motion.div>
-              <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl lg:text-6xl font-black text-white leading-[1.05] max-w-3xl uppercase">
+              <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl lg:text-6xl font-black text-white leading-[1.05] max-w-3xl uppercase break-words">
                 THREE PILLARS OF
                 <br />
                 <span className="text-brand-teal">CHANGE</span>
@@ -365,7 +429,7 @@ export default function App() {
                   Our Initiatives
                 </span>
               </motion.div>
-              <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl lg:text-5xl font-black text-dark-800 leading-[1.05] uppercase">
+              <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl lg:text-5xl font-black text-dark-800 leading-[1.05] uppercase break-words">
                 BUILDING FUTURES
                 <br className="hidden sm:block" />
                 <span className="text-brand-teal">ACROSS NEWCASTLE</span>
@@ -441,7 +505,7 @@ export default function App() {
                     Upcoming Gatherings
                   </span>
                 </motion.div>
-                <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl lg:text-5xl font-black text-dark-800 mb-8 leading-[1.05] uppercase">
+                <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl lg:text-5xl font-black text-dark-800 mb-8 leading-[1.05] uppercase break-words">
                   WHAT'S HAPPENING
                   <br />
                   <span className="text-brand-teal">IN NEWCASTLE</span>
@@ -745,145 +809,86 @@ export default function App() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
-              variants={fadeUp}
-              className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center"
+              variants={staggerContainer}
+              className="grid lg:grid-cols-3 gap-8 lg:gap-12"
             >
-              <div className="relative aspect-[4/5] sm:aspect-square lg:aspect-[4/5] overflow-hidden rounded-none shadow-lg">
-                <img 
-                  src="https://i.ibb.co/ksHdb78G/IMG-5383-2.jpg" 
-                  alt="Sphe Dlamini" 
-                  className="object-cover object-top w-full h-full absolute inset-0"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-              <div className="flex flex-col justify-center py-4 lg:py-8">
-                <span className="text-brand-teal text-[10px] font-bold uppercase tracking-[0.2em] mb-3 block">
-                  Press Release • Feb 2026
-                </span>
-                <h3 className="text-2xl sm:text-3xl font-black text-navy leading-tight mb-4 uppercase">
-                  Sphe Dlamini Launches KNAWP
-                </h3>
-                <div className="text-navy/70 text-sm sm:text-base leading-relaxed space-y-4">
-                  <p>
-                    In a significant step forward for the community of Newcastle, local visionary Sphe Dlamini has officially announced the launch of Keep Newcastle Alive With Possibilities (KNAWP). This new initiative aims to bridge the gap between potential and opportunity for residents across the region.
-                  </p>
-                  <p>
-                    Recognising the untapped talent and the pressing need for structured support systems, Dlamini established KNAWP to serve as a catalyst for positive change. The organisation will focus on three core areas: community events that foster unity, support initiatives for those facing hardship, and empowerment programs designed to build essential life and career skills.
-                  </p>
-                  <p>
-                    "Our goal is not just to provide temporary relief, but to build sustainable pathways to success for everyone in Newcastle," Dlamini stated during the inaugural address. The movement is already gathering momentum, with local volunteers and community leaders stepping forward to contribute to the vision.
-                  </p>
-                </div>
-                <div className="mt-8">
-                  <a href="#contact" className="inline-flex items-center gap-2 text-brand-teal font-bold text-xs uppercase tracking-wider hover:text-navy transition-colors">
-                    Read More <ArrowRight className="w-4 h-4" />
-                  </a>
-                </div>
-              </div>
+              {[
+                {
+                  id: 1,
+                  heading: "KNAWP Officially Launches to Transform Newcastle",
+                  dateline: "Feb 28, 2026",
+                  excerpt: "In a landmark moment for community development, local visionary Sphe Dlamini has officially unveiled Keep Newcastle Alive With Possibilities (KNAWP)...",
+                  image: "https://i.ibb.co/ksHdb78G/IMG-5383-2.jpg"
+                },
+                {
+                  id: 2,
+                  heading: "Digital Skills Bootcamp Set to Empower Local Youth",
+                  dateline: "Mar 10, 2026",
+                  excerpt: "Addressing the critical need for tech literacy in the modern job market, KNAWP has announced its inaugural Digital Skills Bootcamp...",
+                  image: "https://i.ibb.co/XfB6zrvd/Reskill-Group-Huddle.jpg"
+                },
+                {
+                  id: 3,
+                  heading: "Community Food Drive Delivers Hope to Vulnerable Families",
+                  dateline: "Mar 22, 2026",
+                  excerpt: "Demonstrating the power of collective action, KNAWP's recent community food and clothing drive successfully provided essential supplies to over 50 families...",
+                  image: "https://i.ibb.co/0yBNCPCP/rnb-gathering-1772031387245.png"
+                }
+              ].map((article) => {
+                return (
+                  <motion.article key={article.id} variants={fadeUp} className="bg-cream border border-gray-200 flex flex-col h-full shadow-sm hover:shadow-xl transition-shadow duration-300">
+                    <div className="relative aspect-[16/9] overflow-hidden">
+                      <img 
+                        src={article.image} 
+                        alt={article.heading} 
+                        className="object-cover object-top w-full h-full transition-transform duration-700 hover:scale-105"
+                        referrerPolicy="no-referrer"
+                      />
+                    </div>
+                    <div className="p-6 sm:p-8 flex flex-col flex-grow">
+                      <div className="mb-4">
+                        <span className="text-brand-teal text-[10px] font-bold uppercase tracking-[0.2em] block mb-1">
+                          {article.dateline}
+                        </span>
+                      </div>
+                      
+                      <h3 className="text-xl sm:text-2xl font-black text-navy leading-tight mb-4 uppercase break-words">
+                        {article.heading}
+                      </h3>
+                      
+                      <div className="text-navy/80 text-sm leading-relaxed space-y-4 flex-grow">
+                        <p>
+                          {article.excerpt}
+                        </p>
+                      </div>
+                      
+                      <div className="mt-8 pt-6 border-t border-gray-200 flex flex-wrap items-center justify-between gap-4">
+                        <Link to={`/blog/${article.id}`} className="inline-flex items-center gap-2 text-brand-teal font-bold text-xs uppercase tracking-wider hover:text-navy transition-colors">
+                          Read More <ArrowRight className="w-4 h-4" />
+                        </Link>
+                      </div>
+                    </div>
+                  </motion.article>
+                );
+              })}
+            </motion.div>
+
+            <motion.div 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={fadeUp}
+              className="mt-12 text-center"
+            >
+              <Link to="/blog" className="inline-flex items-center justify-center gap-3 px-8 py-4 border-2 border-navy text-navy font-bold text-xs uppercase tracking-wider hover:bg-navy hover:text-white transition-colors">
+                View All Articles <ArrowRight className="w-4 h-4" />
+              </Link>
             </motion.div>
           </div>
         </section>
 
       {/* Footer */}
-      <footer id="contact" className="relative overflow-hidden bg-dark-950">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-brand-teal/5 rounded-full blur-3xl"></div>
-          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-brand-teal/5 rounded-full blur-3xl"></div>
-        </div>
-        
-        <div className="relative">
-          <div className="bg-brand-teal py-10 sm:py-14 md:py-16">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-12">
-                <div className="text-center lg:text-left">
-                  <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black text-dark-800 leading-tight uppercase">
-                    Let's Build Newcastle Together
-                  </h2>
-                  <p className="text-dark-800/70 text-sm sm:text-base mt-2 max-w-md mx-auto lg:mx-0">
-                    Reach out to us to donate, volunteer, or learn more.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-8">
-              <div className="col-span-1 sm:col-span-2 lg:col-span-4">
-                <a className="flex items-center gap-3 mb-5 sm:mb-6 group" href="/">
-                  <div className="flex flex-col">
-                    <div className="flex items-center gap-3">
-                      <img src="https://i.ibb.co/WpRMjw7K/1771954845123.jpg" alt="KNAWP Logo" className="h-10 sm:h-12 w-auto rounded-md" referrerPolicy="no-referrer" />
-                      <span className="font-heading text-xl sm:text-2xl font-black uppercase tracking-wider text-white">
-                        KNAWP
-                      </span>
-                    </div>
-                  </div>
-                </a>
-                <p className="text-white/50 text-sm leading-relaxed mb-5 sm:mb-6 max-w-xs">
-                  A community movement dedicated to uplifting, empowering, and connecting the people of Newcastle.
-                </p>
-                <p className="text-white/30 text-xs">
-                  Founded February 2026
-                </p>
-              </div>
-              
-              <div className="col-span-1 lg:col-span-4 lg:col-start-9">
-                <h3 className="text-white font-bold text-sm uppercase tracking-wider mb-4 sm:mb-5">
-                  Contact Us
-                </h3>
-                <ul className="space-y-3 sm:space-y-4">
-                  <li>
-                    <div className="group">
-                      <p className="text-white/40 text-xs uppercase tracking-wider mb-0.5 flex items-center gap-2">
-                        <Mail className="w-3 h-3" /> Email
-                      </p>
-                      <p className="text-white/70 text-sm group-hover:text-brand-teal transition-colors">
-                        hello@knawp.org <span className="text-brand-teal/50 text-xs ml-1">(placeholder)</span>
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="group">
-                      <p className="text-white/40 text-xs uppercase tracking-wider mb-0.5 flex items-center gap-2">
-                        <Phone className="w-3 h-3" /> Phone / WhatsApp
-                      </p>
-                      <p className="text-white/70 text-sm group-hover:text-brand-teal transition-colors">
-                        +27 (0) 00 000 0000 <span className="text-brand-teal/50 text-xs ml-1">(placeholder)</span>
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="group">
-                      <p className="text-white/40 text-xs uppercase tracking-wider mb-0.5 flex items-center gap-2">
-                        <MapPin className="w-3 h-3" /> Location
-                      </p>
-                      <p className="text-white/70 text-sm">
-                        Newcastle, KwaZulu-Natal, South Africa
-                      </p>
-                    </div>
-                  </li>
-                </ul>
-                <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-white/10">
-                  <p className="text-brand-teal/50 text-xs italic">Social media coming soon.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div className="border-t border-white/10">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 sm:py-6">
-              <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4">
-                <div className="text-white/30 text-xs sm:text-sm text-center sm:text-left">
-                  <p>
-                    © 2026 Keep Newcastle Alive With Possibilities. All rights reserved.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

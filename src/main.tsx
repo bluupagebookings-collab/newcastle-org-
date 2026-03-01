@@ -8,6 +8,8 @@ import Programs from './pages/Programs.tsx';
 import Events from './pages/Events.tsx';
 import Volunteer from './pages/Volunteer.tsx';
 import Donate from './pages/Donate.tsx';
+import Blog from './pages/Blog.tsx';
+import BlogPost from './pages/BlogPost.tsx';
 import ScrollToTop from './components/ScrollToTop.tsx';
 import './index.css';
 
@@ -23,6 +25,8 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/events" element={<Events />} />
         <Route path="/volunteer" element={<Volunteer />} />
         <Route path="/donate" element={<Donate />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:id" element={<BlogPost />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,

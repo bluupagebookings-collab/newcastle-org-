@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { ArrowRight, MapPin, Briefcase, BookOpen, HandHeart, Music } from 'lucide-react';
+import { ArrowRight, MapPin, Briefcase, BookOpen, HandHeart, Music, Facebook, Twitter, MessageCircle, Link2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function Home() {
@@ -81,7 +81,7 @@ export default function Home() {
                 </span>
               </motion.div>
               <motion.div variants={fadeUp} className="overflow-hidden mb-4 sm:mb-6">
-                <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white tracking-tight leading-[1.05] sm:leading-[1] uppercase">
+                <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white tracking-tight leading-[1.05] sm:leading-[1] uppercase break-words">
                   KEEP NEWCASTLE ALIVE WITH POSSIBILITIES
                 </h1>
               </motion.div>
@@ -116,7 +116,7 @@ export default function Home() {
                 <div className="w-12 h-px bg-brand-teal"></div>
                 <span className="text-brand-teal font-bold tracking-[0.25em] text-[10px] uppercase">The Founder</span>
               </div>
-              <h2 className="text-4xl xl:text-5xl font-black text-dark-800 mb-8 leading-[1.05] uppercase">
+              <h2 className="text-4xl xl:text-5xl font-black text-dark-800 mb-8 leading-[1.05] uppercase break-words">
                 EVERY RESIDENT DESERVES <br /><span className="text-brand-teal">ACCESS TO OPPORTUNITY</span>
               </h2>
               <div className="text-dark-800/60 text-base leading-relaxed mb-8 space-y-4">
@@ -200,9 +200,9 @@ export default function Home() {
             <motion.div variants={fadeUp} className="relative aspect-[4/3] sm:aspect-[16/9] lg:aspect-auto overflow-hidden shadow-lg group">
               <img src="https://i.ibb.co/Pzc82WVY/1771954802701.jpg" alt="Event" className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700" referrerPolicy="no-referrer" />
               <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/50 to-transparent flex flex-col justify-end p-8">
-                <span className="bg-brand-teal text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 w-fit mb-4">Mar 28, 2026</span>
-                <h3 className="text-2xl sm:text-3xl font-black text-white uppercase mb-2">KNAWP First Community Event</h3>
-                <p className="text-white/80 text-sm mb-4">Newcastle Central Park, KZN</p>
+                <span className="bg-brand-teal text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 w-fit mb-4">Mar 13, 2026</span>
+                <h3 className="text-2xl sm:text-3xl font-black text-white uppercase mb-2">KNAWP Event Hosted by Sphe Dlamini & Friends</h3>
+                <p className="text-white/80 text-sm mb-4">Afro Bowl, Madadeni Sec 6, Newcastle</p>
               </div>
             </motion.div>
             <motion.div variants={fadeUp} className="flex flex-col gap-4">
@@ -240,30 +240,30 @@ export default function Home() {
             )}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div>
-                <label className="text-[10px] font-bold uppercase tracking-wider text-navy block mb-2">Name</label>
+                <label htmlFor="firstName" className="text-[10px] font-bold uppercase tracking-wider text-navy block mb-2">Name</label>
                 <input type="text" id="firstName" value={assistForm.firstName} onChange={handleAssistChange} className={`w-full bg-cream border ${assistErrors.firstName ? 'border-red-500' : 'border-gray-200'} px-4 py-3 text-sm focus:outline-none focus:border-brand-teal`} />
                 {assistErrors.firstName && <p className="text-red-500 text-xs mt-1">{assistErrors.firstName}</p>}
               </div>
               <div>
-                <label className="text-[10px] font-bold uppercase tracking-wider text-navy block mb-2">Surname</label>
+                <label htmlFor="lastName" className="text-[10px] font-bold uppercase tracking-wider text-navy block mb-2">Surname</label>
                 <input type="text" id="lastName" value={assistForm.lastName} onChange={handleAssistChange} className={`w-full bg-cream border ${assistErrors.lastName ? 'border-red-500' : 'border-gray-200'} px-4 py-3 text-sm focus:outline-none focus:border-brand-teal`} />
                 {assistErrors.lastName && <p className="text-red-500 text-xs mt-1">{assistErrors.lastName}</p>}
               </div>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div>
-                <label className="text-[10px] font-bold uppercase tracking-wider text-navy block mb-2">Email</label>
+                <label htmlFor="email" className="text-[10px] font-bold uppercase tracking-wider text-navy block mb-2">Email</label>
                 <input type="email" id="email" value={assistForm.email} onChange={handleAssistChange} className={`w-full bg-cream border ${assistErrors.email ? 'border-red-500' : 'border-gray-200'} px-4 py-3 text-sm focus:outline-none focus:border-brand-teal`} />
                 {assistErrors.email && <p className="text-red-500 text-xs mt-1">{assistErrors.email}</p>}
               </div>
               <div>
-                <label className="text-[10px] font-bold uppercase tracking-wider text-navy block mb-2">Age</label>
+                <label htmlFor="age" className="text-[10px] font-bold uppercase tracking-wider text-navy block mb-2">Age</label>
                 <input type="number" id="age" value={assistForm.age} onChange={handleAssistChange} className={`w-full bg-cream border ${assistErrors.age ? 'border-red-500' : 'border-gray-200'} px-4 py-3 text-sm focus:outline-none focus:border-brand-teal`} />
                 {assistErrors.age && <p className="text-red-500 text-xs mt-1">{assistErrors.age}</p>}
               </div>
             </div>
             <div>
-              <label className="text-[10px] font-bold uppercase tracking-wider text-navy block mb-2">Location (Newcastle)</label>
+              <label htmlFor="location" className="text-[10px] font-bold uppercase tracking-wider text-navy block mb-2">Location (Newcastle)</label>
               <select id="location" value={assistForm.location} onChange={handleAssistChange} className={`w-full bg-cream border ${assistErrors.location ? 'border-red-500' : 'border-gray-200'} px-4 py-3 text-sm focus:outline-none focus:border-brand-teal appearance-none`}>
                 <option value="" disabled>Select a township/neighborhood</option>
                 <option value="Madadeni">Madadeni</option>
@@ -278,7 +278,7 @@ export default function Home() {
               {assistErrors.location && <p className="text-red-500 text-xs mt-1">{assistErrors.location}</p>}
             </div>
             <div>
-              <label className="text-[10px] font-bold uppercase tracking-wider text-navy block mb-2">Brief Description</label>
+              <label htmlFor="message" className="text-[10px] font-bold uppercase tracking-wider text-navy block mb-2">Brief Description</label>
               <textarea id="message" rows={3} value={assistForm.message} onChange={handleAssistChange} className="w-full bg-cream border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-brand-teal resize-none"></textarea>
             </div>
             <button type="submit" className="w-full bg-brand-teal text-white font-bold text-xs uppercase tracking-wider py-4 hover:bg-navy transition-colors">Submit Request</button>
@@ -325,18 +325,78 @@ export default function Home() {
             </motion.h2>
           </motion.div>
 
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-            <div className="relative aspect-[4/5] sm:aspect-square lg:aspect-[4/5] overflow-hidden rounded-none shadow-lg">
-              <img src="https://i.ibb.co/ksHdb78G/IMG-5383-2.jpg" alt="Sphe Dlamini" className="object-cover object-top w-full h-full absolute inset-0" referrerPolicy="no-referrer" />
-            </div>
-            <div className="flex flex-col justify-center py-4 lg:py-8">
-              <span className="text-brand-teal text-[10px] font-bold uppercase tracking-[0.2em] mb-3 block">Press Release • Feb 2026</span>
-              <h3 className="text-2xl sm:text-3xl font-black text-navy leading-tight mb-4 uppercase">Sphe Dlamini Launches KNAWP</h3>
-              <div className="text-navy/70 text-sm sm:text-base leading-relaxed space-y-4">
-                <p>In a significant step forward for the community of Newcastle, local visionary Sphe Dlamini has officially announced the launch of Keep Newcastle Alive With Possibilities (KNAWP). This new initiative aims to bridge the gap between potential and opportunity for residents across the region.</p>
-                <p>Recognising the untapped talent and the pressing need for structured support systems, Dlamini established KNAWP to serve as a catalyst for positive change. The organisation will focus on three core areas: community events that foster unity, support initiatives for those facing hardship, and empowerment programs designed to build essential life and career skills.</p>
-              </div>
-            </div>
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="grid lg:grid-cols-3 gap-8 lg:gap-12">
+            {[
+              {
+                id: 1,
+                heading: "KNAWP Officially Launches to Transform Newcastle",
+                dateline: "Feb 28, 2026",
+                excerpt: "In a landmark moment for community development, local visionary Sphe Dlamini has officially unveiled Keep Newcastle Alive With Possibilities (KNAWP)...",
+                image: "https://i.ibb.co/ksHdb78G/IMG-5383-2.jpg"
+              },
+              {
+                id: 2,
+                heading: "Digital Skills Bootcamp Set to Empower Local Youth",
+                dateline: "Mar 10, 2026",
+                excerpt: "Addressing the critical need for tech literacy in the modern job market, KNAWP has announced its inaugural Digital Skills Bootcamp...",
+                image: "https://i.ibb.co/XfB6zrvd/Reskill-Group-Huddle.jpg"
+              },
+              {
+                id: 3,
+                heading: "Community Food Drive Delivers Hope to Vulnerable Families",
+                dateline: "Mar 22, 2026",
+                excerpt: "Demonstrating the power of collective action, KNAWP's recent community food and clothing drive successfully provided essential supplies to over 50 families...",
+                image: "https://i.ibb.co/0yBNCPCP/rnb-gathering-1772031387245.png"
+              }
+            ].map((article) => {
+              return (
+                <motion.article key={article.id} variants={fadeUp} className="bg-cream border border-gray-200 flex flex-col h-full shadow-sm hover:shadow-xl transition-shadow duration-300">
+                  <div className="relative aspect-[16/9] overflow-hidden">
+                    <img 
+                      src={article.image} 
+                      alt={article.heading} 
+                      className="object-cover object-top w-full h-full transition-transform duration-700 hover:scale-105"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                  <div className="p-6 sm:p-8 flex flex-col flex-grow">
+                    <div className="mb-4">
+                      <span className="text-brand-teal text-[10px] font-bold uppercase tracking-[0.2em] block mb-1">
+                        {article.dateline}
+                      </span>
+                    </div>
+                    
+                    <h3 className="text-xl sm:text-2xl font-black text-navy leading-tight mb-4 uppercase break-words">
+                      {article.heading}
+                    </h3>
+                    
+                    <div className="text-navy/80 text-sm leading-relaxed space-y-4 flex-grow">
+                      <p>
+                        {article.excerpt}
+                      </p>
+                    </div>
+                    
+                    <div className="mt-8 pt-6 border-t border-gray-200 flex flex-wrap items-center justify-between gap-4">
+                      <Link to={`/blog/${article.id}`} className="inline-flex items-center gap-2 text-brand-teal font-bold text-xs uppercase tracking-wider hover:text-navy transition-colors">
+                        Read More <ArrowRight className="w-4 h-4" />
+                      </Link>
+                    </div>
+                  </div>
+                </motion.article>
+              );
+            })}
+          </motion.div>
+
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeUp}
+            className="mt-12 text-center"
+          >
+            <Link to="/blog" className="inline-flex items-center justify-center gap-3 px-8 py-4 border-2 border-navy text-navy font-bold text-xs uppercase tracking-wider hover:bg-navy hover:text-white transition-colors">
+              View All Articles <ArrowRight className="w-4 h-4" />
+            </Link>
           </motion.div>
         </div>
       </section>

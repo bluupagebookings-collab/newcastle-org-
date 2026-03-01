@@ -139,8 +139,8 @@ export default function Volunteer() {
 
                   <div className="space-y-2">
                     <label className="text-[10px] font-bold uppercase tracking-wider text-navy block">Area of Interest</label>
-                    <select required className="w-full bg-cream border border-gray-200 px-4 py-3.5 rounded-xl text-sm focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal transition-colors appearance-none">
-                      <option value="" disabled selected>Select how you want to help</option>
+                    <select required defaultValue="" className="w-full bg-cream border border-gray-200 px-4 py-3.5 rounded-xl text-sm focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal transition-colors appearance-none">
+                      <option value="" disabled>Select how you want to help</option>
                       <option value="events">Event Setup & Coordination</option>
                       <option value="mentorship">Mentorship & Teaching</option>
                       <option value="welfare">Welfare & Distribution</option>
