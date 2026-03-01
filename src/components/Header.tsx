@@ -30,7 +30,7 @@ export default function Header() {
         <div className="flex items-center justify-between h-20 sm:h-24">
           <div className="flex items-center">
             <Link className="flex items-center gap-1.5" to="/">
-              <img src="https://i.ibb.co/WpRMjw7K/1771954845123.jpg" alt="KNAWP Logo" className="h-10 sm:h-12 w-auto rounded-md" referrerPolicy="no-referrer" />
+              <img src="https://i.ibb.co/0R5GDGhM/1771954845123-removebg-preview.png" alt="KNAWP Logo" className="h-10 sm:h-12 w-auto" referrerPolicy="no-referrer" />
             </Link>
           </div>
           <div className="flex items-center gap-4 sm:gap-6 xl:gap-10">

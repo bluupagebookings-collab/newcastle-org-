@@ -15,24 +15,6 @@ const blogPosts = [
     author: "KNAWP Editorial Team",
     category: "News",
     image: "https://i.ibb.co/ksHdb78G/IMG-5383-2.jpg"
-  },
-  {
-    id: '2',
-    title: "Digital Skills Bootcamp Set to Empower Local Youth",
-    excerpt: "Addressing the critical need for tech literacy in the modern job market, KNAWP has announced its inaugural Digital Skills Bootcamp...",
-    date: "Mar 10, 2026",
-    author: "KNAWP Education Desk",
-    category: "Education",
-    image: "https://i.ibb.co/XfB6zrvd/Reskill-Group-Huddle.jpg"
-  },
-  {
-    id: '3',
-    title: "Community Food Drive Delivers Hope to Vulnerable Families",
-    excerpt: "Demonstrating the power of collective action, KNAWP's recent community food and clothing drive successfully provided essential supplies to over 50 families...",
-    date: "Mar 22, 2026",
-    author: "KNAWP Outreach Team",
-    category: "Outreach",
-    image: "https://i.ibb.co/0yBNCPCP/rnb-gathering-1772031387245.png"
   }
 ];
 

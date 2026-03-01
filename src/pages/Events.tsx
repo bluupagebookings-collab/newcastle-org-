@@ -4,6 +4,7 @@ import { MapPin, Calendar, ArrowRight, Clock, Users } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import PageHero from '../components/PageHero';
+import PosterSlider from '../components/PosterSlider';
 import { Link } from 'react-router-dom';
 
 export default function Events() {
@@ -34,12 +35,7 @@ export default function Events() {
               variants={fadeUp}
               className="relative aspect-[4/5] sm:aspect-[16/9] lg:aspect-[4/5] rounded-none overflow-hidden shadow-2xl group"
             >
-              <img 
-                alt="Community Event" 
-                className="object-cover w-full h-full transition-transform duration-1000 group-hover:scale-105" 
-                src="https://i.ibb.co/Pzc82WVY/1771954802701.jpg"
-                referrerPolicy="no-referrer"
-              />
+              <PosterSlider className="object-cover w-full h-full transition-transform duration-1000 group-hover:scale-105" />
             </motion.div>
 
             {/* Events List (Right Side) */}

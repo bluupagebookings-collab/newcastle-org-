@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { ArrowRight, MapPin, Mail, Phone, Heart, Calendar, CheckCircle2, Menu, X, Search, Facebook, Twitter, MessageCircle, Link2 } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import Footer from './components/Footer';
+import PosterSlider from './components/PosterSlider';
 
 export default function App() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -106,7 +107,7 @@ export default function App() {
           <div className="flex items-center justify-between h-20 sm:h-24">
             <div className="flex items-center">
               <Link className="flex items-center gap-1.5" to="/">
-                <img src="https://i.ibb.co/WpRMjw7K/1771954845123.jpg" alt="KNAWP Logo" className="h-10 sm:h-12 w-auto rounded-md" referrerPolicy="no-referrer" />
+                <img src="https://i.ibb.co/0R5GDGhM/1771954845123-removebg-preview.png" alt="KNAWP Logo" className="h-10 sm:h-12 w-auto" referrerPolicy="no-referrer" />
               </Link>
             </div>
             <div className="flex items-center gap-6 xl:gap-10">
@@ -320,7 +321,7 @@ export default function App() {
                     Founder & Director
                   </p>
                 </div>
-                <blockquote className="text-xl font-heading italic text-dark-800 mb-8 max-w-lg">
+                <blockquote className="text-lg sm:text-xl font-heading italic text-dark-800 mb-8 max-w-full sm:max-w-lg leading-relaxed">
                   “We envision a Newcastle where every resident feels empowered to contribute — a future defined by opportunity, dignity, and hope.”
                 </blockquote>
               </motion.div>
@@ -553,14 +554,9 @@ export default function App() {
                 variants={fadeUp}
                 className="relative aspect-[4/5] sm:aspect-square lg:aspect-[4/5] rounded-none overflow-hidden"
               >
-                <img 
-                  alt="Community Event" 
-                  className="object-cover w-full h-full" 
-                  src="https://i.ibb.co/Pzc82WVY/1771954802701.jpg"
-                  referrerPolicy="no-referrer"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-                <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
+                <PosterSlider className="object-cover w-full h-full" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent z-20 pointer-events-none"></div>
+                <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 z-30 pointer-events-none">
                   <span className="px-3 py-1.5 bg-brand-teal text-dark-900 text-[9px] font-bold uppercase tracking-widest inline-block mb-3">
                     Featured Event
                   </span>
@@ -819,40 +815,29 @@ export default function App() {
                   dateline: "Feb 28, 2026",
                   excerpt: "In a landmark moment for community development, local visionary Sphe Dlamini has officially unveiled Keep Newcastle Alive With Possibilities (KNAWP)...",
                   image: "https://i.ibb.co/ksHdb78G/IMG-5383-2.jpg"
-                },
-                {
-                  id: 2,
-                  heading: "Digital Skills Bootcamp Set to Empower Local Youth",
-                  dateline: "Mar 10, 2026",
-                  excerpt: "Addressing the critical need for tech literacy in the modern job market, KNAWP has announced its inaugural Digital Skills Bootcamp...",
-                  image: "https://i.ibb.co/XfB6zrvd/Reskill-Group-Huddle.jpg"
-                },
-                {
-                  id: 3,
-                  heading: "Community Food Drive Delivers Hope to Vulnerable Families",
-                  dateline: "Mar 22, 2026",
-                  excerpt: "Demonstrating the power of collective action, KNAWP's recent community food and clothing drive successfully provided essential supplies to over 50 families...",
-                  image: "https://i.ibb.co/0yBNCPCP/rnb-gathering-1772031387245.png"
                 }
               ].map((article) => {
                 return (
-                  <motion.article key={article.id} variants={fadeUp} className="bg-cream border border-gray-200 flex flex-col h-full shadow-sm hover:shadow-xl transition-shadow duration-300">
+                  <motion.article key={article.id} variants={fadeUp} className="bg-cream border border-gray-200 flex flex-col h-full shadow-sm hover:shadow-xl transition-shadow duration-300 relative group cursor-pointer">
+                    <Link to="/blog" className="absolute inset-0 z-10">
+                      <span className="sr-only">Read {article.heading}</span>
+                    </Link>
                     <div className="relative aspect-[16/9] overflow-hidden">
                       <img 
                         src={article.image} 
                         alt={article.heading} 
-                        className="object-cover object-top w-full h-full transition-transform duration-700 hover:scale-105"
+                        className="object-cover object-top w-full h-full transition-transform duration-700 group-hover:scale-105"
                         referrerPolicy="no-referrer"
                       />
                     </div>
-                    <div className="p-6 sm:p-8 flex flex-col flex-grow">
+                    <div className="p-6 sm:p-8 flex flex-col flex-grow relative z-0">
                       <div className="mb-4">
                         <span className="text-brand-teal text-[10px] font-bold uppercase tracking-[0.2em] block mb-1">
                           {article.dateline}
                         </span>
                       </div>
                       
-                      <h3 className="text-xl sm:text-2xl font-black text-navy leading-tight mb-4 uppercase break-words">
+                      <h3 className="text-xl sm:text-2xl font-black text-navy leading-tight mb-4 uppercase break-words group-hover:text-brand-teal transition-colors">
                         {article.heading}
                       </h3>
                       
@@ -863,9 +848,9 @@ export default function App() {
                       </div>
                       
                       <div className="mt-8 pt-6 border-t border-gray-200 flex flex-wrap items-center justify-between gap-4">
-                        <Link to={`/blog/${article.id}`} className="inline-flex items-center gap-2 text-brand-teal font-bold text-xs uppercase tracking-wider hover:text-navy transition-colors">
+                        <span className="inline-flex items-center gap-2 text-brand-teal font-bold text-xs uppercase tracking-wider group-hover:text-navy transition-colors">
                           Read More <ArrowRight className="w-4 h-4" />
-                        </Link>
+                        </span>
                       </div>
                     </div>
                   </motion.article>
