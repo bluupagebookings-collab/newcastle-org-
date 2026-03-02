@@ -78,12 +78,10 @@ export default function Volunteer() {
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
               variants={fadeUp}
-              className="lg:col-span-5 relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-brand-teal/20 to-navy"
+              className="lg:col-span-5 relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl bg-navy flex flex-col items-center justify-center border border-white/10 p-8 sm:p-10 text-center"
             >
-              <div className="absolute -right-20 -top-20 w-64 h-64 bg-brand-teal/30 rounded-full blur-[80px]"></div>
-              <div className="absolute -left-20 -bottom-20 w-64 h-64 bg-white/10 rounded-full blur-[80px]"></div>
-              <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/40 to-transparent"></div>
-              <div className="absolute bottom-0 left-0 right-0 p-8 sm:p-10">
+              <HeartHandshake className="w-40 h-40 sm:w-64 sm:h-64 text-white/[0.03] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" strokeWidth={1} />
+              <div className="relative z-10 mt-auto w-full">
                 <h3 className="text-2xl sm:text-3xl font-black text-white uppercase mb-4 leading-tight break-words">Ready to step up?</h3>
                 <p className="text-white/80 text-base leading-relaxed">
                   Fill out the application form and our volunteer coordinator will be in touch with you shortly to discuss how you can help.

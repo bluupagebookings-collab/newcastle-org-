@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import PageHero from '../components/PageHero';
-import { ArrowRight, Code, Briefcase, BookOpen, Palette } from 'lucide-react';
+import { ArrowRight, Code, Briefcase, BookOpen, Palette, Accessibility } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function Programs() {
@@ -18,6 +18,16 @@ export default function Programs() {
   };
 
   const programs = [
+    {
+      title: "Mobility & Independence",
+      category: "Community Welfare",
+      status: "Active",
+      icon: Accessibility,
+      desc: "Our flagship initiative providing free, high-quality wheelchairs and mobility aids to disabled individuals across Newcastle. We believe mobility is a fundamental right, and this program aims to restore independence, dignity, and accessibility to those who need it most.",
+      duration: "Ongoing",
+      audience: "Disabled Individuals",
+      active: true
+    },
     {
       title: "Digital Skills Bootcamp",
       category: "Skills & Employment",

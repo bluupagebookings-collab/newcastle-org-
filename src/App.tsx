@@ -5,7 +5,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useSpring, useTransform } from 'motion/react';
-import { ArrowRight, MapPin, Mail, Phone, Heart, Calendar, CheckCircle2, Menu, X, Search, Facebook, Twitter, MessageCircle, Link2 } from 'lucide-react';
+import { ArrowRight, MapPin, Mail, Phone, Heart, Calendar, CheckCircle2, Menu, X, Search, Facebook, Twitter, MessageCircle, Link2, Zap, Users, HeartHandshake, Globe } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import Footer from './components/Footer';
 import PosterSlider from './components/PosterSlider';
@@ -223,34 +223,16 @@ export default function App() {
         {/* Hero Section */}
         <section className="relative h-[100svh] min-h-[600px] overflow-hidden bg-navy">
           <motion.div 
-            className="absolute inset-0 bg-navy overflow-hidden"
+            className="absolute inset-0 bg-navy overflow-hidden flex items-center justify-center"
             style={{ y: heroY, opacity: heroOpacity }}
           >
-            {/* Animated Abstract Background */}
-            <div className="absolute inset-0 opacity-30">
-              <motion.div 
-                animate={{ 
-                  scale: [1, 1.2, 1],
-                  rotate: [0, 90, 0],
-                  opacity: [0.3, 0.5, 0.3]
-                }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                className="absolute -top-[20%] -right-[10%] w-[70%] h-[70%] rounded-full bg-brand-teal blur-[120px]"
-              />
-              <motion.div 
-                animate={{ 
-                  scale: [1, 1.5, 1],
-                  rotate: [0, -90, 0],
-                  opacity: [0.2, 0.4, 0.2]
-                }}
-                transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                className="absolute -bottom-[20%] -left-[10%] w-[60%] h-[60%] rounded-full bg-white blur-[100px]"
-              />
-            </div>
+            {/* Large Abstract Icon */}
+            <Globe className="absolute -right-[10%] -bottom-[10%] w-[80vw] h-[80vw] text-white/[0.02] rotate-12 pointer-events-none" strokeWidth={0.5} />
+            <Users className="absolute -left-[5%] top-[10%] w-[40vw] h-[40vw] text-brand-teal/[0.02] -rotate-12 pointer-events-none" strokeWidth={0.5} />
+            
             {/* Grid Pattern Overlay */}
             <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')] opacity-50"></div>
           </motion.div>
-          <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/40 to-transparent z-10 pointer-events-none"></div>
           
           <div className="absolute inset-0 z-20 flex items-center justify-center pt-16 sm:pt-20">
             <div className="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-20">
@@ -386,24 +368,24 @@ export default function App() {
                   title: "COMMUNITY EVENTS",
                   subtitle: "Culture & Unity",
                   desc: "Inclusive events that celebrate culture, creativity, and unity.",
-                  gradient: "from-brand-teal/20 to-brand-teal/5"
+                  icon: Calendar
                 },
                 {
                   title: "SUPPORT INITIATIVES",
                   subtitle: "Welfare",
                   desc: "Assistance for individuals and families facing hardship.",
-                  gradient: "from-white/10 to-transparent"
+                  icon: Heart
                 },
                 {
                   title: "EMPOWERMENT PROGRAMS",
                   subtitle: "Skills & Confidence",
                   desc: "Workshops and development initiatives that build skills and confidence.",
-                  gradient: "from-brand-teal/10 to-transparent"
+                  icon: Zap
                 }
               ].map((pillar, idx) => (
                 <motion.div key={idx} variants={fadeUp} className="group block h-full">
-                  <div className={`relative overflow-hidden rounded-2xl h-[360px] sm:h-full sm:min-h-[400px] bg-gradient-to-br ${pillar.gradient} border border-white/10 p-6 flex flex-col justify-between transition-all duration-500 hover:border-brand-teal/50`}>
-                    <div className="absolute -right-10 -top-10 w-40 h-40 bg-brand-teal/10 rounded-full blur-3xl group-hover:bg-brand-teal/20 transition-colors duration-500"></div>
+                  <div className={`relative overflow-hidden rounded-2xl h-[360px] sm:h-full sm:min-h-[400px] bg-navy border border-white/10 p-8 flex flex-col justify-between transition-all duration-500 hover:border-brand-teal/50`}>
+                    <pillar.icon className="absolute -right-4 -top-4 w-48 h-48 text-white/[0.03] group-hover:text-brand-teal/[0.05] transition-colors duration-500 rotate-12" strokeWidth={1} />
                     
                     <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center font-black text-brand-teal text-xl border border-white/10 relative z-10">
                       0{idx + 1}
@@ -459,6 +441,12 @@ export default function App() {
             >
               {[
                 {
+                  title: "Mobility & Independence",
+                  status: "Active",
+                  desc: "Providing free wheelchairs and mobility aids to empower disabled individuals and restore their independence.",
+                  active: true
+                },
+                {
                   title: "Skills & Employment",
                   status: "Launching Soon",
                   desc: "Career training covering digital skills, entrepreneurship, trades, and financial literacy.",
@@ -474,12 +462,6 @@ export default function App() {
                   title: "Community Welfare",
                   status: "In Planning",
                   desc: "Direct support for vulnerable individuals and families.",
-                  active: false
-                },
-                {
-                  title: "Arts & Culture",
-                  status: "In Planning",
-                  desc: "Celebrating diversity through art, music, dance, and storytelling.",
                   active: false
                 }
               ].map((program, idx) => (

@@ -25,7 +25,6 @@ export default function Pillars() {
       icon: Users,
       desc: "We believe that a united community is a strong community. Our events are designed to bring people from all walks of life together to celebrate our shared culture, creativity, and humanity. From local music festivals to art exhibitions and community markets, we create safe, vibrant spaces where Newcastle residents can connect, network, and build lasting relationships.",
       bullets: ["Cultural festivals and gatherings", "Local artist showcases", "Community markets and fairs", "Networking and social events"],
-      gradient: "from-brand-teal/20 to-navy",
       reverse: false
     },
     {
@@ -35,7 +34,6 @@ export default function Pillars() {
       icon: Heart,
       desc: "Hardship can strike anyone, and when it does, the community must stand together. Our support initiatives provide direct, tangible assistance to individuals and families facing difficult times in Newcastle. Whether it's food drives, winter clothing distributions, or emergency relief funds, we ensure that our most vulnerable neighbors are not left behind.",
       bullets: ["Food and essential supplies distribution", "Emergency relief for families", "Winter warmth drives", "Mental health awareness campaigns"],
-      gradient: "from-white/10 to-navy",
       reverse: true
     },
     {
@@ -45,7 +43,6 @@ export default function Pillars() {
       icon: Zap,
       desc: "True change comes from empowering individuals to change their own lives. Our empowerment programs focus on equipping the youth and unemployed adults with the skills, knowledge, and confidence they need to succeed. We offer workshops ranging from digital literacy and entrepreneurship to trade skills and CV writing.",
       bullets: ["Digital literacy and coding workshops", "Entrepreneurship and business skills", "Career guidance and CV writing", "Leadership and mentorship programs"],
-      gradient: "from-brand-teal/10 to-navy",
       reverse: false
     }
   ];
@@ -82,11 +79,9 @@ export default function Pillars() {
                 variants={staggerContainer}
                 className={`grid lg:grid-cols-2 gap-12 lg:gap-20 items-center ${pillar.reverse ? 'lg:flex-row-reverse' : ''}`}
               >
-                <motion.div variants={fadeUp} className={`relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br ${pillar.gradient} border border-navy/5 ${pillar.reverse ? 'lg:order-2' : ''}`}>
-                  <div className="absolute -right-20 -top-20 w-64 h-64 bg-brand-teal/20 rounded-full blur-[80px]"></div>
-                  <div className="absolute -left-20 -bottom-20 w-64 h-64 bg-white/10 rounded-full blur-[80px]"></div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy/60 to-transparent"></div>
-                  <div className="absolute bottom-6 left-6 bg-white/90 backdrop-blur px-4 py-2 rounded-lg flex items-center gap-3 shadow-lg">
+                <motion.div variants={fadeUp} className={`relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl bg-white border border-navy/5 flex items-center justify-center ${pillar.reverse ? 'lg:order-2' : ''}`}>
+                  <pillar.icon className="w-48 h-48 sm:w-64 sm:h-64 text-navy/[0.03]" strokeWidth={1} />
+                  <div className="absolute bottom-6 left-6 bg-navy/5 backdrop-blur px-4 py-2 rounded-lg flex items-center gap-3 shadow-none border border-navy/10">
                     <pillar.icon className="w-5 h-5 text-brand-teal" />
                     <span className="font-bold text-navy uppercase tracking-wider text-xs">Pillar 0{idx + 1}</span>
                   </div>
