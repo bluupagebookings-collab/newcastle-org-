@@ -4,14 +4,23 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, useScroll, useSpring, useTransform } from 'motion/react';
 import { ArrowRight, MapPin, Mail, Phone, Heart, Calendar, CheckCircle2, Menu, X, Search, Facebook, Twitter, MessageCircle, Link2 } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import Footer from './components/Footer';
 import PosterSlider from './components/PosterSlider';
 
 export default function App() {
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+  const { scrollY } = useScroll();
+  const heroY = useTransform(scrollY, [0, 1000], [0, 300]);
+  const heroOpacity = useTransform(scrollY, [0, 500], [1, 0]);
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -75,15 +84,6 @@ export default function App() {
     }
   };
 
-  const heroImages = [
-    "https://i.ibb.co/0yBNCPCP/rnb-gathering-1772031387245.png",
-    "https://i.ibb.co/Hfb2j30m/rnb-gathering-1772031343356.png"
-  ];
-
-  useEffect(() => {
-    // Hero slider removed to keep the website solid and stable
-  }, []);
-
   const fadeUp = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { duration: 0.6, ease: "easeOut" } }
@@ -101,6 +101,10 @@ export default function App() {
 
   return (
     <div className="min-h-screen flex flex-col font-sans selection:bg-brand-teal selection:text-dark-900 overflow-x-hidden w-full relative">
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-1 bg-brand-teal origin-left z-[60]"
+        style={{ scaleX }}
+      />
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-navy/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -218,20 +222,35 @@ export default function App() {
       <main className="flex-grow">
         {/* Hero Section */}
         <section className="relative h-[100svh] min-h-[600px] overflow-hidden bg-navy">
-          <div className="absolute inset-0 bg-navy">
-            {heroImages.map((src, idx) => (
-              <img
-                key={src}
-                alt={`Hero slide ${idx + 1}`}
-                className={`object-cover object-center w-full h-full absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                  idx === currentSlide ? 'opacity-50' : 'opacity-0'
-                }`}
-                src={src}
-                referrerPolicy="no-referrer"
+          <motion.div 
+            className="absolute inset-0 bg-navy overflow-hidden"
+            style={{ y: heroY, opacity: heroOpacity }}
+          >
+            {/* Animated Abstract Background */}
+            <div className="absolute inset-0 opacity-30">
+              <motion.div 
+                animate={{ 
+                  scale: [1, 1.2, 1],
+                  rotate: [0, 90, 0],
+                  opacity: [0.3, 0.5, 0.3]
+                }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                className="absolute -top-[20%] -right-[10%] w-[70%] h-[70%] rounded-full bg-brand-teal blur-[120px]"
               />
-            ))}
-          </div>
-          <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/40 to-transparent z-10"></div>
+              <motion.div 
+                animate={{ 
+                  scale: [1, 1.5, 1],
+                  rotate: [0, -90, 0],
+                  opacity: [0.2, 0.4, 0.2]
+                }}
+                transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                className="absolute -bottom-[20%] -left-[10%] w-[60%] h-[60%] rounded-full bg-white blur-[100px]"
+              />
+            </div>
+            {/* Grid Pattern Overlay */}
+            <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')] opacity-50"></div>
+          </motion.div>
+          <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/40 to-transparent z-10 pointer-events-none"></div>
           
           <div className="absolute inset-0 z-20 flex items-center justify-center pt-16 sm:pt-20">
             <div className="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-20">
@@ -367,43 +386,37 @@ export default function App() {
                   title: "COMMUNITY EVENTS",
                   subtitle: "Culture & Unity",
                   desc: "Inclusive events that celebrate culture, creativity, and unity.",
-                  img: "https://i.ibb.co/TDCX7wBW/rnb-gathering-1772054012867.jpg"
+                  gradient: "from-brand-teal/20 to-brand-teal/5"
                 },
                 {
                   title: "SUPPORT INITIATIVES",
                   subtitle: "Welfare",
                   desc: "Assistance for individuals and families facing hardship.",
-                  img: "https://i.ibb.co/0yBNCPCP/rnb-gathering-1772031387245.png"
+                  gradient: "from-white/10 to-transparent"
                 },
                 {
                   title: "EMPOWERMENT PROGRAMS",
                   subtitle: "Skills & Confidence",
                   desc: "Workshops and development initiatives that build skills and confidence.",
-                  img: "https://i.ibb.co/XfB6zrvd/Reskill-Group-Huddle.jpg"
+                  gradient: "from-brand-teal/10 to-transparent"
                 }
               ].map((pillar, idx) => (
                 <motion.div key={idx} variants={fadeUp} className="group block h-full">
-                  <div className="relative overflow-hidden rounded-2xl h-[360px] sm:h-full sm:min-h-[400px]">
-                    <img 
-                      alt={pillar.title} 
-                      className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105" 
-                      src={pillar.img}
-                      referrerPolicy="no-referrer"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10"></div>
-                    <div className="absolute top-5 left-5">
-                      <div className="w-10 h-10 bg-brand-teal rounded-lg flex items-center justify-center font-black text-dark-900">
-                        0{idx + 1}
-                      </div>
+                  <div className={`relative overflow-hidden rounded-2xl h-[360px] sm:h-full sm:min-h-[400px] bg-gradient-to-br ${pillar.gradient} border border-white/10 p-6 flex flex-col justify-between transition-all duration-500 hover:border-brand-teal/50`}>
+                    <div className="absolute -right-10 -top-10 w-40 h-40 bg-brand-teal/10 rounded-full blur-3xl group-hover:bg-brand-teal/20 transition-colors duration-500"></div>
+                    
+                    <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center font-black text-brand-teal text-xl border border-white/10 relative z-10">
+                      0{idx + 1}
                     </div>
-                    <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6 bg-gradient-to-t from-black/90 via-black/60 to-transparent">
-                      <span className="text-brand-teal text-[9px] font-bold uppercase tracking-[0.2em] mb-1 sm:mb-2 block">
+                    
+                    <div className="relative z-10 mt-auto">
+                      <span className="text-brand-teal text-[10px] font-bold uppercase tracking-[0.2em] mb-3 block">
                         {pillar.subtitle}
                       </span>
-                      <h3 className="text-lg sm:text-xl font-black text-white leading-tight mb-2 group-hover:text-brand-teal transition-colors">
+                      <h3 className="text-xl sm:text-2xl font-black text-white leading-tight mb-4 group-hover:text-brand-teal transition-colors">
                         {pillar.title}
                       </h3>
-                      <p className="text-white/80 text-xs sm:text-sm leading-relaxed line-clamp-3 sm:line-clamp-2">
+                      <p className="text-white/70 text-sm leading-relaxed">
                         {pillar.desc}
                       </p>
                     </div>
@@ -591,7 +604,7 @@ export default function App() {
                 REQUEST <span className="text-brand-teal">ASSISTANCE</span>
               </motion.h2>
               <motion.p variants={fadeUp} className="text-white/70 text-sm sm:text-base max-w-xl mx-auto">
-                If you or someone you know in Newcastle needs support, please fill out the form below. Our team will review your request and get in touch.
+                If you are in Newcastle and need support, please fill out the form below. Our team will review your request and get in touch.
               </motion.p>
             </motion.div>
 

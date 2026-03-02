@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, useScroll, useSpring } from 'motion/react';
 import { Menu, X, Search } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
@@ -9,6 +9,13 @@ export default function Header() {
   const [searchQuery, setSearchQuery] = useState('');
   const location = useLocation();
   const navigate = useNavigate();
+
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -25,7 +32,12 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-navy/10">
+    <>
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-1 bg-brand-teal origin-left z-[60]"
+        style={{ scaleX }}
+      />
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-navy/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20 sm:h-24">
           <div className="flex items-center">
@@ -138,5 +150,6 @@ export default function Header() {
         )}
       </AnimatePresence>
     </header>
+    </>
   );
 }

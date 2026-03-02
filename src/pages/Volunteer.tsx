@@ -27,7 +27,7 @@ export default function Volunteer() {
   return (
     <div className="min-h-screen flex flex-col font-sans selection:bg-brand-teal selection:text-dark-900 overflow-x-hidden w-full relative bg-cream">
       <Header />
-      <PageHero title="Volunteer" subtitle="Join The Movement" image="https://i.ibb.co/XfB6zrvd/Reskill-Group-Huddle.jpg" />
+      <PageHero title="Volunteer" subtitle="Join The Movement" />
 
       <main className="flex-grow py-16 sm:py-24 lg:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16">
@@ -78,14 +78,10 @@ export default function Volunteer() {
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
               variants={fadeUp}
-              className="lg:col-span-5 relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl"
+              className="lg:col-span-5 relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-brand-teal/20 to-navy"
             >
-              <img 
-                alt="Volunteers" 
-                className="object-cover w-full h-full" 
-                src="https://i.ibb.co/XfB6zrvd/Reskill-Group-Huddle.jpg"
-                referrerPolicy="no-referrer"
-              />
+              <div className="absolute -right-20 -top-20 w-64 h-64 bg-brand-teal/30 rounded-full blur-[80px]"></div>
+              <div className="absolute -left-20 -bottom-20 w-64 h-64 bg-white/10 rounded-full blur-[80px]"></div>
               <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/40 to-transparent"></div>
               <div className="absolute bottom-0 left-0 right-0 p-8 sm:p-10">
                 <h3 className="text-2xl sm:text-3xl font-black text-white uppercase mb-4 leading-tight break-words">Ready to step up?</h3>

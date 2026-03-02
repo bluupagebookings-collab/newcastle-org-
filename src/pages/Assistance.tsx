@@ -87,7 +87,7 @@ export default function Assistance() {
             REQUEST <span className="text-brand-teal">ASSISTANCE</span>
           </motion.h2>
           <motion.p variants={fadeUp} className="text-white/70 text-sm sm:text-base max-w-xl mx-auto">
-            If you are in Newcastle and needs support, please fill out the form below. Our team will review your request and get in touch.
+            If you are in Newcastle and need support, please fill out the form below. Our team will review your request and get in touch.
           </motion.p>
         </motion.div>
 

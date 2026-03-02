@@ -25,7 +25,7 @@ export default function Pillars() {
       icon: Users,
       desc: "We believe that a united community is a strong community. Our events are designed to bring people from all walks of life together to celebrate our shared culture, creativity, and humanity. From local music festivals to art exhibitions and community markets, we create safe, vibrant spaces where Newcastle residents can connect, network, and build lasting relationships.",
       bullets: ["Cultural festivals and gatherings", "Local artist showcases", "Community markets and fairs", "Networking and social events"],
-      img: "https://i.ibb.co/TDCX7wBW/rnb-gathering-1772054012867.jpg",
+      gradient: "from-brand-teal/20 to-navy",
       reverse: false
     },
     {
@@ -35,7 +35,7 @@ export default function Pillars() {
       icon: Heart,
       desc: "Hardship can strike anyone, and when it does, the community must stand together. Our support initiatives provide direct, tangible assistance to individuals and families facing difficult times in Newcastle. Whether it's food drives, winter clothing distributions, or emergency relief funds, we ensure that our most vulnerable neighbors are not left behind.",
       bullets: ["Food and essential supplies distribution", "Emergency relief for families", "Winter warmth drives", "Mental health awareness campaigns"],
-      img: "https://i.ibb.co/0yBNCPCP/rnb-gathering-1772031387245.png",
+      gradient: "from-white/10 to-navy",
       reverse: true
     },
     {
@@ -45,7 +45,7 @@ export default function Pillars() {
       icon: Zap,
       desc: "True change comes from empowering individuals to change their own lives. Our empowerment programs focus on equipping the youth and unemployed adults with the skills, knowledge, and confidence they need to succeed. We offer workshops ranging from digital literacy and entrepreneurship to trade skills and CV writing.",
       bullets: ["Digital literacy and coding workshops", "Entrepreneurship and business skills", "Career guidance and CV writing", "Leadership and mentorship programs"],
-      img: "https://i.ibb.co/XfB6zrvd/Reskill-Group-Huddle.jpg",
+      gradient: "from-brand-teal/10 to-navy",
       reverse: false
     }
   ];
@@ -53,7 +53,7 @@ export default function Pillars() {
   return (
     <div className="min-h-screen flex flex-col font-sans selection:bg-brand-teal selection:text-dark-900 overflow-x-hidden w-full relative bg-cream">
       <Header />
-      <PageHero title="Our Pillars" subtitle="The Foundation of KNAWP" image="https://i.ibb.co/Hfb2j30m/rnb-gathering-1772031343356.png" />
+      <PageHero title="Our Pillars" subtitle="The Foundation of KNAWP" />
 
       <main className="flex-grow py-16 sm:py-24 lg:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16">
@@ -82,13 +82,9 @@ export default function Pillars() {
                 variants={staggerContainer}
                 className={`grid lg:grid-cols-2 gap-12 lg:gap-20 items-center ${pillar.reverse ? 'lg:flex-row-reverse' : ''}`}
               >
-                <motion.div variants={fadeUp} className={`relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl ${pillar.reverse ? 'lg:order-2' : ''}`}>
-                  <img 
-                    src={pillar.img} 
-                    alt={pillar.title} 
-                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                    referrerPolicy="no-referrer"
-                  />
+                <motion.div variants={fadeUp} className={`relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br ${pillar.gradient} border border-navy/5 ${pillar.reverse ? 'lg:order-2' : ''}`}>
+                  <div className="absolute -right-20 -top-20 w-64 h-64 bg-brand-teal/20 rounded-full blur-[80px]"></div>
+                  <div className="absolute -left-20 -bottom-20 w-64 h-64 bg-white/10 rounded-full blur-[80px]"></div>
                   <div className="absolute inset-0 bg-gradient-to-t from-navy/60 to-transparent"></div>
                   <div className="absolute bottom-6 left-6 bg-white/90 backdrop-blur px-4 py-2 rounded-lg flex items-center gap-3 shadow-lg">
                     <pillar.icon className="w-5 h-5 text-brand-teal" />
