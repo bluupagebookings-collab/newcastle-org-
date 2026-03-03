@@ -23,7 +23,7 @@ export default function About() {
       <PageHero title="About Us" subtitle="Our Story" image="https://i.ibb.co/0yBNCPCP/rnb-gathering-1772031387245.png" />
 
       <main className="flex-grow">
-        {/* Founder Section */}
+        {/* Director Section */}
         <section className="py-24 lg:py-32 bg-white">
           <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16">
             <motion.div 
@@ -36,7 +36,7 @@ export default function About() {
               <motion.div variants={fadeUp} className="lg:col-span-5 relative">
                 <div className="relative aspect-[3/4] rounded-none overflow-hidden shadow-2xl">
                   <img 
-                    alt="Sphe Dlamini, Founder" 
+                    alt="Sphe Dlamini, Director" 
                     className="object-cover object-top w-full h-full" 
                     src="https://i.ibb.co/ksHdb78G/IMG-5383-2.jpg"
                     referrerPolicy="no-referrer"
