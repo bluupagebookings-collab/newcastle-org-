@@ -249,21 +249,34 @@ export default function App() {
                   </span>
                 </motion.div>
                 <motion.div variants={fadeUp} className="overflow-hidden mb-4 sm:mb-6">
-                  <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white tracking-tight leading-[1.05] sm:leading-[1] uppercase break-words">
-                    KEEP NEWCASTLE ALIVE WITH POSSIBILITIES
+                  <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white tracking-tighter leading-[0.9] uppercase break-words">
+                    NEWCASTLE'S NEXT <span className="text-brand-teal">CHAPTER</span>
                   </h1>
                 </motion.div>
-                <motion.p variants={fadeUp} className="text-white/80 text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed font-light mb-8 sm:mb-10">
-                  A new community movement dedicated to uplifting lives, unlocking opportunities, and bringing people together through meaningful events, support, and empowerment programs.
+                <motion.p variants={fadeUp} className="text-white/70 text-base sm:text-lg md:text-xl max-w-2xl leading-relaxed font-medium mb-8 sm:mb-10">
+                  A youth-led, professional-driven movement building a sustainable, inclusive, and empowered Newcastle. We don't just talk change—we engineer it.
                 </motion.p>
-                <motion.div variants={fadeUp} className="flex flex-wrap gap-3 sm:gap-4">
-                  <a className="group inline-flex items-center justify-center gap-3 px-7 sm:px-9 py-3.5 sm:py-4 bg-brand-teal text-white font-bold text-xs sm:text-sm uppercase tracking-wider rounded-none hover:bg-white hover:text-navy transition-colors duration-300 w-fit" href="#donate">
+                <motion.div variants={fadeUp} className="flex flex-wrap gap-3 sm:gap-4 mb-12">
+                  <a className="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-brand-teal text-white font-black text-xs uppercase tracking-widest rounded-none hover:bg-white hover:text-navy transition-all duration-300 w-fit" href="#donate">
                     Support Our Mission
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </a>
-                  <a className="inline-flex items-center justify-center gap-3 px-7 sm:px-9 py-3.5 sm:py-4 border border-white/30 text-white font-bold text-xs sm:text-sm uppercase tracking-wider rounded-none hover:border-white hover:bg-white/10 transition-colors duration-300 w-fit" href="#volunteer">
-                    Become a Volunteer
-                  </a>
+                </motion.div>
+                
+                {/* Impact Ticker */}
+                <motion.div variants={fadeUp} className="grid grid-cols-3 gap-8 border-t border-white/10 pt-8">
+                  <div>
+                    <div className="text-3xl font-black text-white">50+</div>
+                    <div className="text-[10px] uppercase tracking-widest text-white/50 mt-1">Wheelchairs Delivered</div>
+                  </div>
+                  <div>
+                    <div className="text-3xl font-black text-white">1.2k</div>
+                    <div className="text-[10px] uppercase tracking-widest text-white/50 mt-1">Youth Empowered</div>
+                  </div>
+                  <div>
+                    <div className="text-3xl font-black text-white">2026</div>
+                    <div className="text-[10px] uppercase tracking-widest text-white/50 mt-1">Founded</div>
+                  </div>
                 </motion.div>
               </motion.div>
             </div>
@@ -298,33 +311,32 @@ export default function App() {
                     A Movement Born in Newcastle
                   </span>
                 </div>
-                <h2 className="text-4xl xl:text-5xl font-black text-dark-800 mb-8 leading-[1.05] uppercase break-words">
-                  EVERY RESIDENT DESERVES
+                <h2 className="text-4xl xl:text-6xl font-black text-dark-800 mb-8 leading-[0.9] uppercase break-words tracking-tighter">
+                  ENGINEERING <span className="text-brand-teal">COMMUNITY</span>
                   <br />
-                  <span className="text-brand-teal">ACCESS TO OPPORTUNITY</span>
+                  <span className="text-brand-teal">IMPACT</span>
                 </h2>
-                <div className="text-dark-800/60 text-base leading-relaxed mb-8 space-y-4">
+                <div className="text-dark-800/70 text-lg leading-relaxed mb-10 space-y-6">
                   <p>
-                    <strong className="text-dark-800">KNAWP</strong> is a community organisation created to transform lives across Newcastle, KwaZulu-Natal.
+                    <strong className="text-dark-800 font-black">KNAWP</strong> isn't just an NGO; it's a professional-grade community engine. Founded in 2026, we bridge the gap between untapped potential and real-world opportunity in Newcastle, KZN.
                   </p>
                   <p>
-                    From youth development to welfare support, from skills training to cultural events — everything we do is designed to help Newcastle thrive.
-                  </p>
-                  <p>
-                    Born and raised in Newcastle, founder Sphe Dlamini has a deep connection to the community he calls home. Growing up, he saw both the challenges residents face and the incredible potential that often goes unrealised.
+                    We combine the raw energy of youth with the strategic rigour of professional development. From mobility initiatives to digital skills training, we design solutions that are scalable, sustainable, and deeply human.
                   </p>
                 </div>
-                <div className="border-l-2 border-brand-teal pl-5 mb-8">
-                  <p className="font-signature text-3xl text-dark-800">
-                    Sphe Dlamini
-                  </p>
-                  <p className="text-dark-800/40 text-[10px] uppercase tracking-[0.2em] mt-1">
-                    Founder & Director
-                  </p>
+                <div className="flex items-center gap-6 border-t border-gray-200 pt-8">
+                  <div className="w-16 h-16 rounded-full bg-navy flex items-center justify-center">
+                    <span className="text-white font-black text-xl">SD</span>
+                  </div>
+                  <div>
+                    <p className="font-black text-dark-800 text-lg uppercase tracking-tight">
+                      Sphe Dlamini
+                    </p>
+                    <p className="text-brand-teal text-[10px] uppercase tracking-[0.2em] font-bold mt-1">
+                      Founder & Director
+                    </p>
+                  </div>
                 </div>
-                <blockquote className="text-lg sm:text-xl font-heading italic text-dark-800 mb-8 max-w-full sm:max-w-lg leading-relaxed">
-                  “We envision a Newcastle where every resident feels empowered to contribute — a future defined by opportunity, dignity, and hope.”
-                </blockquote>
               </motion.div>
             </motion.div>
           </div>
@@ -410,25 +422,23 @@ export default function App() {
         </section>
 
         {/* Programs Section */}
-        <section id="programs" className="py-16 sm:py-24 lg:py-32 bg-white">
+        <section id="programs" className="py-24 lg:py-32 bg-white">
           <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16">
             <motion.div 
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
               variants={staggerContainer}
-              className="mb-12 sm:mb-16"
+              className="mb-20"
             >
-              <motion.div variants={fadeUp} className="flex items-center gap-3 mb-4">
-                <div className="w-8 sm:w-12 h-px bg-brand-teal"></div>
-                <span className="text-brand-teal font-bold tracking-[0.25em] text-[9px] sm:text-[10px] uppercase">
+              <motion.div variants={fadeUp} className="flex items-center gap-4 mb-6">
+                <div className="w-16 h-px bg-brand-teal"></div>
+                <span className="text-brand-teal font-black tracking-[0.3em] text-[10px] uppercase">
                   Our Initiatives
                 </span>
               </motion.div>
-              <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl lg:text-5xl font-black text-dark-800 leading-[1.05] uppercase break-words">
-                BUILDING FUTURES
-                <br className="hidden sm:block" />
-                <span className="text-brand-teal">ACROSS NEWCASTLE</span>
+              <motion.h2 variants={fadeUp} className="text-4xl lg:text-7xl font-black text-dark-900 leading-[0.9] uppercase tracking-tighter">
+                ENGINEERING <span className="text-brand-teal">FUTURES</span>
               </motion.h2>
             </motion.div>
 
@@ -437,7 +447,7 @@ export default function App() {
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
               variants={staggerContainer}
-              className="grid sm:grid-cols-2 gap-6"
+              className="grid md:grid-cols-2 gap-8"
             >
               {[
                 {
@@ -468,15 +478,16 @@ export default function App() {
                 <motion.div 
                   key={idx} 
                   variants={fadeUp} 
-                  className={`p-6 sm:p-10 rounded-none border ${program.active ? 'bg-[#faf8f5] border-brand-teal/30' : 'bg-white border-gray-100'}`}
+                  className={`group p-10 border ${program.active ? 'bg-navy text-white' : 'bg-cream border-gray-200'} transition-all duration-500 hover:border-brand-teal`}
                 >
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 mb-4 sm:mb-6">
-                    <h4 className="text-lg sm:text-xl font-black text-dark-800 uppercase tracking-wide">{program.title}</h4>
-                    <span className={`text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-none w-fit ${program.active ? 'bg-navy text-white' : 'bg-gray-100 text-gray-500'}`}>
+                  <div className="flex items-center justify-between mb-8">
+                    <span className={`text-[10px] font-black uppercase tracking-widest px-4 py-2 ${program.active ? 'bg-brand-teal text-navy' : 'bg-gray-200 text-gray-600'}`}>
                       {program.status}
                     </span>
+                    <span className="text-4xl font-black opacity-20">0{idx + 1}</span>
                   </div>
-                  <p className="text-sm text-dark-800/70 leading-relaxed">
+                  <h4 className="text-2xl font-black uppercase tracking-tight mb-4 group-hover:text-brand-teal transition-colors">{program.title}</h4>
+                  <p className={`text-sm leading-relaxed ${program.active ? 'text-white/70' : 'text-dark-800/70'}`}>
                     {program.desc}
                   </p>
                 </motion.div>
@@ -486,59 +497,39 @@ export default function App() {
         </section>
 
         {/* Events Section */}
-        <section id="events" className="py-16 sm:py-24 lg:py-32 bg-cream">
+        <section id="events" className="py-24 lg:py-32 bg-cream">
           <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16">
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
               <motion.div 
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-100px" }}
                 variants={staggerContainer}
               >
-                <motion.div variants={fadeUp} className="flex items-center gap-3 mb-5">
-                  <div className="w-8 sm:w-12 h-px bg-brand-teal"></div>
-                  <span className="text-brand-teal font-bold tracking-[0.25em] text-[9px] sm:text-[10px] uppercase">
+                <motion.div variants={fadeUp} className="flex items-center gap-4 mb-6">
+                  <div className="w-16 h-px bg-brand-teal"></div>
+                  <span className="text-brand-teal font-black tracking-[0.3em] text-[10px] uppercase">
                     Upcoming Gatherings
                   </span>
                 </motion.div>
-                <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl lg:text-5xl font-black text-dark-800 mb-8 leading-[1.05] uppercase break-words">
-                  WHAT'S HAPPENING
-                  <br />
-                  <span className="text-brand-teal">IN NEWCASTLE</span>
+                <motion.h2 variants={fadeUp} className="text-4xl lg:text-7xl font-black text-dark-900 mb-12 leading-[0.9] uppercase tracking-tighter">
+                  WHAT'S <span className="text-brand-teal">HAPPENING</span>
                 </motion.h2>
                 
-                <motion.div variants={fadeUp} className="space-y-0 mb-8 sm:mb-10">
-                  <div className="flex gap-5 group">
-                    <div className="flex flex-col items-center">
-                      <div className="w-3 h-3 rounded-full bg-brand-teal ring-4 ring-brand-teal/20 shrink-0 mt-1"></div>
-                      <div className="w-px flex-1 bg-brand-teal/20 my-1"></div>
-                    </div>
-                    <div className="pb-8">
-                      <p className="text-brand-teal text-[10px] font-bold uppercase tracking-[0.2em] mb-1">
-                        Mar 28, 2026
-                      </p>
-                      <h4 className="font-bold text-dark-800 text-base sm:text-lg mb-2 uppercase">
-                        KNAWP First Community Event
-                      </h4>
-                      <p className="text-dark-800/60 text-sm mb-3">
-                        A celebration of community, connection, and a powerful beginning.
-                      </p>
-                      <p className="text-dark-800/40 text-xs flex items-center gap-1.5">
-                        <MapPin className="w-3 h-3" />
-                        Newcastle, KZN
-                      </p>
-                    </div>
+                <motion.div variants={fadeUp} className="bg-white p-10 border border-gray-200">
+                  <div className="text-brand-teal text-[10px] font-black uppercase tracking-[0.3em] mb-4">
+                    Mar 28, 2026
                   </div>
-                  <div className="flex gap-5 group">
-                    <div className="flex flex-col items-center">
-                      <div className="w-3 h-3 rounded-full bg-gray-300 shrink-0 mt-1"></div>
-                    </div>
-                    <div className="pb-8">
-                      <p className="text-gray-400 text-xs italic">
-                        More events coming soon.
-                      </p>
-                    </div>
-                  </div>
+                  <h4 className="font-black text-dark-900 text-3xl mb-6 uppercase tracking-tight">
+                    KNAWP First Community Event
+                  </h4>
+                  <p className="text-dark-800/70 text-base mb-8 leading-relaxed">
+                    A celebration of community, connection, and a powerful beginning. Join us for a day of unity and possibility.
+                  </p>
+                  <p className="text-dark-900 font-bold text-xs flex items-center gap-2 uppercase tracking-widest">
+                    <MapPin className="w-4 h-4 text-brand-teal" />
+                    Newcastle, KZN
+                  </p>
                 </motion.div>
               </motion.div>
               
@@ -547,15 +538,14 @@ export default function App() {
                 whileInView="visible"
                 viewport={{ once: true, margin: "-100px" }}
                 variants={fadeUp}
-                className="relative aspect-[4/5] sm:aspect-square lg:aspect-[4/5] rounded-none overflow-hidden"
+                className="relative aspect-[4/5] lg:aspect-square rounded-none overflow-hidden"
               >
                 <PosterSlider className="object-cover w-full h-full" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent z-20 pointer-events-none"></div>
-                <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 z-30 pointer-events-none">
-                  <span className="px-3 py-1.5 bg-brand-teal text-dark-900 text-[9px] font-bold uppercase tracking-widest inline-block mb-3">
+                <div className="absolute bottom-0 left-0 right-0 p-10 z-30">
+                  <span className="px-4 py-2 bg-brand-teal text-navy text-[10px] font-black uppercase tracking-widest inline-block mb-4">
                     Featured Event
                   </span>
-                  <h3 className="text-2xl sm:text-3xl font-black text-white uppercase">
+                  <h3 className="text-4xl font-black text-white uppercase tracking-tighter">
                     First Community Event
                   </h3>
                 </div>

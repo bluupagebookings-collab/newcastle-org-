@@ -74,19 +74,19 @@ export default function Assistance() {
           initial="hidden"
           animate="visible"
           variants={staggerContainer}
-          className="mb-10 sm:mb-12 text-center"
+          className="mb-20 text-center"
         >
-          <motion.div variants={fadeUp} className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-8 sm:w-12 h-px bg-brand-teal"></div>
-            <span className="text-brand-teal font-bold tracking-[0.25em] text-[9px] sm:text-[10px] uppercase">
+          <motion.div variants={fadeUp} className="flex items-center justify-center gap-4 mb-8">
+            <div className="w-16 h-px bg-brand-teal"></div>
+            <span className="text-brand-teal font-black tracking-[0.3em] text-[10px] uppercase">
               We Are Here For You
             </span>
-            <div className="w-8 sm:w-12 h-px bg-brand-teal"></div>
+            <div className="w-16 h-px bg-brand-teal"></div>
           </motion.div>
-          <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-[1.05] uppercase mb-4">
+          <motion.h2 variants={fadeUp} className="text-3xl lg:text-7xl font-black text-white leading-[0.9] uppercase tracking-tighter mb-8">
             REQUEST <span className="text-brand-teal">ASSISTANCE</span>
           </motion.h2>
-          <motion.p variants={fadeUp} className="text-white/70 text-sm sm:text-base max-w-xl mx-auto">
+          <motion.p variants={fadeUp} className="text-white/70 text-lg max-w-xl mx-auto leading-relaxed">
             If you are in Newcastle and need support, please fill out the form below. Our team will review your request and get in touch.
           </motion.p>
         </motion.div>
@@ -95,45 +95,45 @@ export default function Assistance() {
           initial="hidden"
           animate="visible"
           variants={fadeUp}
-          className="bg-white p-6 sm:p-10 rounded-none shadow-2xl space-y-5 sm:space-y-6"
+          className="bg-white p-12 shadow-2xl space-y-8"
           onSubmit={handleAssistanceSubmit}
           noValidate
         >
           {submitSuccess && (
-            <div className="bg-brand-teal/10 border border-brand-teal text-brand-teal-dark px-4 py-3 rounded-none text-sm font-medium mb-6">
+            <div className="bg-brand-teal/10 border border-brand-teal text-navy px-8 py-6 text-center font-black uppercase tracking-widest text-xs mb-10">
               Request submitted successfully. Our team will review your request and get in touch soon.
             </div>
           )}
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
-            <div className="space-y-2">
-              <label htmlFor="firstName" className="text-[10px] font-bold uppercase tracking-wider text-navy block">Name</label>
-              <input type="text" id="firstName" value={formData.firstName} onChange={handleInputChange} className={`w-full bg-cream border ${formErrors.firstName ? 'border-red-500' : 'border-gray-200'} px-4 py-3 text-sm focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal transition-colors`} placeholder="Enter your name" />
-              {formErrors.firstName && <p className="text-red-500 text-xs mt-1">{formErrors.firstName}</p>}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            <div className="space-y-3">
+              <label htmlFor="firstName" className="text-[10px] font-black uppercase tracking-widest text-dark-900 block">Name</label>
+              <input type="text" id="firstName" value={formData.firstName} onChange={handleInputChange} className={`w-full bg-cream border ${formErrors.firstName ? 'border-red-500' : 'border-gray-200'} px-6 py-4 text-sm focus:outline-none focus:border-brand-teal transition-colors`} placeholder="Enter your name" />
+              {formErrors.firstName && <p className="text-red-500 text-[10px] font-black uppercase tracking-widest mt-2">{formErrors.firstName}</p>}
             </div>
-            <div className="space-y-2">
-              <label htmlFor="lastName" className="text-[10px] font-bold uppercase tracking-wider text-navy block">Surname</label>
-              <input type="text" id="lastName" value={formData.lastName} onChange={handleInputChange} className={`w-full bg-cream border ${formErrors.lastName ? 'border-red-500' : 'border-gray-200'} px-4 py-3 text-sm focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal transition-colors`} placeholder="Enter your surname" />
-              {formErrors.lastName && <p className="text-red-500 text-xs mt-1">{formErrors.lastName}</p>}
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
-            <div className="space-y-2">
-              <label htmlFor="email" className="text-[10px] font-bold uppercase tracking-wider text-navy block">Email Address</label>
-              <input type="email" id="email" value={formData.email} onChange={handleInputChange} className={`w-full bg-cream border ${formErrors.email ? 'border-red-500' : 'border-gray-200'} px-4 py-3 text-sm focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal transition-colors`} placeholder="Enter your email" />
-              {formErrors.email && <p className="text-red-500 text-xs mt-1">{formErrors.email}</p>}
-            </div>
-            <div className="space-y-2">
-              <label htmlFor="age" className="text-[10px] font-bold uppercase tracking-wider text-navy block">Age</label>
-              <input type="number" id="age" min="0" max="120" value={formData.age} onChange={handleInputChange} className={`w-full bg-cream border ${formErrors.age ? 'border-red-500' : 'border-gray-200'} px-4 py-3 text-sm focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal transition-colors`} placeholder="Enter your age" />
-              {formErrors.age && <p className="text-red-500 text-xs mt-1">{formErrors.age}</p>}
+            <div className="space-y-3">
+              <label htmlFor="lastName" className="text-[10px] font-black uppercase tracking-widest text-dark-900 block">Surname</label>
+              <input type="text" id="lastName" value={formData.lastName} onChange={handleInputChange} className={`w-full bg-cream border ${formErrors.lastName ? 'border-red-500' : 'border-gray-200'} px-6 py-4 text-sm focus:outline-none focus:border-brand-teal transition-colors`} placeholder="Enter your surname" />
+              {formErrors.lastName && <p className="text-red-500 text-[10px] font-black uppercase tracking-widest mt-2">{formErrors.lastName}</p>}
             </div>
           </div>
 
-          <div className="space-y-2">
-            <label htmlFor="location" className="text-[10px] font-bold uppercase tracking-wider text-navy block">Location in Newcastle (KZN)</label>
-            <select id="location" value={formData.location} onChange={handleInputChange} className={`w-full bg-cream border ${formErrors.location ? 'border-red-500' : 'border-gray-200'} px-4 py-3 text-sm focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal transition-colors appearance-none`}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            <div className="space-y-3">
+              <label htmlFor="email" className="text-[10px] font-black uppercase tracking-widest text-dark-900 block">Email Address</label>
+              <input type="email" id="email" value={formData.email} onChange={handleInputChange} className={`w-full bg-cream border ${formErrors.email ? 'border-red-500' : 'border-gray-200'} px-6 py-4 text-sm focus:outline-none focus:border-brand-teal transition-colors`} placeholder="Enter your email" />
+              {formErrors.email && <p className="text-red-500 text-[10px] font-black uppercase tracking-widest mt-2">{formErrors.email}</p>}
+            </div>
+            <div className="space-y-3">
+              <label htmlFor="age" className="text-[10px] font-black uppercase tracking-widest text-dark-900 block">Age</label>
+              <input type="number" id="age" min="0" max="120" value={formData.age} onChange={handleInputChange} className={`w-full bg-cream border ${formErrors.age ? 'border-red-500' : 'border-gray-200'} px-6 py-4 text-sm focus:outline-none focus:border-brand-teal transition-colors`} placeholder="Enter your age" />
+              {formErrors.age && <p className="text-red-500 text-[10px] font-black uppercase tracking-widest mt-2">{formErrors.age}</p>}
+            </div>
+          </div>
+
+          <div className="space-y-3">
+            <label htmlFor="location" className="text-[10px] font-black uppercase tracking-widest text-dark-900 block">Location in Newcastle (KZN)</label>
+            <select id="location" value={formData.location} onChange={handleInputChange} className={`w-full bg-cream border ${formErrors.location ? 'border-red-500' : 'border-gray-200'} px-6 py-4 text-sm focus:outline-none focus:border-brand-teal transition-colors appearance-none`}>
               <option value="" disabled>Select your neighborhood / township</option>
               <option value="Amajuba Park">Amajuba Park</option>
               <option value="Arbor Park">Arbor Park</option>
@@ -160,16 +160,16 @@ export default function Assistance() {
               <option value="Suryaville">Suryaville</option>
               <option value="Other">Other</option>
             </select>
-            {formErrors.location && <p className="text-red-500 text-xs mt-1">{formErrors.location}</p>}
+            {formErrors.location && <p className="text-red-500 text-[10px] font-black uppercase tracking-widest mt-2">{formErrors.location}</p>}
           </div>
 
-          <div className="space-y-2">
-            <label htmlFor="brief" className="text-[10px] font-bold uppercase tracking-wider text-navy block">Short Brief (How can we help?)</label>
-            <textarea id="brief" rows={4} value={formData.brief} onChange={handleInputChange} className={`w-full bg-cream border ${formErrors.brief ? 'border-red-500' : 'border-gray-200'} px-4 py-3 text-sm focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal transition-colors resize-none`} placeholder="Please describe the assistance you need..."></textarea>
-            {formErrors.brief && <p className="text-red-500 text-xs mt-1">{formErrors.brief}</p>}
+          <div className="space-y-3">
+            <label htmlFor="brief" className="text-[10px] font-black uppercase tracking-widest text-dark-900 block">Short Brief (How can we help?)</label>
+            <textarea id="brief" rows={4} value={formData.brief} onChange={handleInputChange} className={`w-full bg-cream border ${formErrors.brief ? 'border-red-500' : 'border-gray-200'} px-6 py-4 text-sm focus:outline-none focus:border-brand-teal transition-colors resize-none`} placeholder="Please describe the assistance you need..."></textarea>
+            {formErrors.brief && <p className="text-red-500 text-[10px] font-black uppercase tracking-widest mt-2">{formErrors.brief}</p>}
           </div>
 
-          <button type="submit" className="w-full bg-brand-teal text-white font-bold text-xs uppercase tracking-wider py-4 hover:bg-navy transition-colors duration-300">
+          <button type="submit" className="w-full bg-brand-teal text-navy font-black text-xs uppercase tracking-widest py-5 hover:bg-navy hover:text-white transition-all duration-300">
             Submit Request
           </button>
         </motion.form>

@@ -52,24 +52,27 @@ export default function Pillars() {
       <Header />
       <PageHero title="Our Pillars" subtitle="The Foundation of KNAWP" />
 
-      <main className="flex-grow py-16 sm:py-24 lg:py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16">
+      <main className="flex-grow py-24 lg:py-32">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16">
           <motion.div 
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
-            className="mb-16 sm:mb-24 text-center"
+            className="mb-24"
           >
-            <motion.h2 variants={fadeUp} className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-dark-800 leading-[1.05] max-w-3xl mx-auto uppercase break-words">
+            <motion.div variants={fadeUp} className="flex items-center gap-4 mb-6">
+              <div className="w-16 h-px bg-brand-teal"></div>
+              <span className="text-brand-teal font-black tracking-[0.3em] text-[10px] uppercase">
+                Our Foundation
+              </span>
+            </motion.div>
+            <motion.h2 variants={fadeUp} className="text-3xl lg:text-7xl font-black text-dark-900 leading-[0.9] uppercase tracking-tighter">
               THREE PILLARS OF <span className="text-brand-teal">CHANGE</span>
             </motion.h2>
-            <motion.p variants={fadeUp} className="text-dark-800/60 mt-6 max-w-2xl mx-auto text-lg">
-              Everything we do is built upon these three foundational pillars, designed to uplift, support, and empower the Newcastle community.
-            </motion.p>
           </motion.div>
 
-          <div className="space-y-24 sm:space-y-32">
+          <div className="space-y-32">
             {pillars.map((pillar, idx) => (
               <motion.div 
                 key={pillar.id}
@@ -77,40 +80,34 @@ export default function Pillars() {
                 whileInView="visible"
                 viewport={{ once: true, margin: "-100px" }}
                 variants={staggerContainer}
-                className={`grid lg:grid-cols-2 gap-12 lg:gap-20 items-center ${pillar.reverse ? 'lg:flex-row-reverse' : ''}`}
+                className="grid lg:grid-cols-12 gap-16 items-center"
               >
-                <motion.div variants={fadeUp} className={`relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl bg-white border border-navy/5 flex items-center justify-center ${pillar.reverse ? 'lg:order-2' : ''}`}>
-                  <pillar.icon className="w-48 h-48 sm:w-64 sm:h-64 text-navy/[0.03]" strokeWidth={1} />
-                  <div className="absolute bottom-6 left-6 bg-navy/5 backdrop-blur px-4 py-2 rounded-lg flex items-center gap-3 shadow-none border border-navy/10">
-                    <pillar.icon className="w-5 h-5 text-brand-teal" />
-                    <span className="font-bold text-navy uppercase tracking-wider text-xs">Pillar 0{idx + 1}</span>
-                  </div>
+                <motion.div variants={fadeUp} className="lg:col-span-5 bg-navy aspect-square flex items-center justify-center text-brand-teal">
+                  <pillar.icon className="w-40 h-40" strokeWidth={1} />
                 </motion.div>
 
-                <motion.div variants={fadeUp} className={pillar.reverse ? 'lg:order-1' : ''}>
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-8 h-px bg-brand-teal"></div>
-                    <span className="text-brand-teal font-bold tracking-[0.25em] text-[10px] uppercase">
+                <motion.div variants={fadeUp} className="lg:col-span-7">
+                  <div className="flex items-center gap-4 mb-8">
+                    <div className="w-16 h-px bg-brand-teal"></div>
+                    <span className="text-brand-teal font-black tracking-[0.3em] text-[10px] uppercase">
                       {pillar.subtitle}
                     </span>
                   </div>
-                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-dark-800 mb-4 sm:mb-6 uppercase break-words">
+                  <h3 className="text-4xl font-black text-dark-900 mb-8 uppercase tracking-tighter">
                     {pillar.title}
                   </h3>
-                  <p className="text-dark-800/70 text-lg leading-relaxed mb-8">
+                  <p className="text-dark-800/70 text-lg leading-relaxed mb-10">
                     {pillar.desc}
                   </p>
-                  <ul className="space-y-4 mb-10">
+                  <ul className="space-y-6 mb-12">
                     {pillar.bullets.map((bullet, bIdx) => (
-                      <li key={bIdx} className="flex items-start gap-3">
-                        <div className="w-6 h-6 rounded-full bg-brand-teal/10 flex items-center justify-center shrink-0 mt-0.5">
-                          <div className="w-2 h-2 rounded-full bg-brand-teal"></div>
-                        </div>
-                        <span className="text-dark-800/80 font-medium">{bullet}</span>
+                      <li key={bIdx} className="flex items-start gap-4">
+                        <div className="w-2 h-2 rounded-full bg-brand-teal mt-2.5 shrink-0"></div>
+                        <span className="text-dark-900 font-black uppercase tracking-tight text-sm">{bullet}</span>
                       </li>
                     ))}
                   </ul>
-                  <Link to={pillar.id === 'events' ? '/events' : '/programs'} className="inline-flex items-center gap-2 text-brand-teal font-bold text-sm uppercase tracking-wider hover:text-navy transition-colors">
+                  <Link to={pillar.id === 'events' ? '/events' : '/programs'} className="inline-flex items-center gap-3 px-8 py-4 bg-navy text-white font-black text-xs uppercase tracking-widest hover:bg-brand-teal hover:text-navy transition-all duration-300">
                     Explore {pillar.title} <ArrowRight className="w-4 h-4" />
                   </Link>
                 </motion.div>

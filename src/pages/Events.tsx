@@ -23,83 +23,88 @@ export default function Events() {
       <Header />
       <PageHero title="Events" subtitle="Upcoming Gatherings" image="https://i.ibb.co/Pzc82WVY/1771954802701.jpg" />
 
-      <main className="flex-grow py-16 sm:py-24 lg:py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+      <main className="flex-grow py-24 lg:py-32">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16">
+          <div className="grid lg:grid-cols-12 gap-16 items-start">
             
-            {/* Featured Event Poster (Left Side) */}
+            {/* Featured Event Poster */}
             <motion.div 
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
               variants={fadeUp}
-              className="relative aspect-[4/5] sm:aspect-[16/9] lg:aspect-[4/5] rounded-none overflow-hidden shadow-2xl group"
+              className="lg:col-span-5 aspect-[4/5] bg-navy flex items-center justify-center border border-white/10"
             >
-              <PosterSlider className="object-cover w-full h-full transition-transform duration-1000 group-hover:scale-105" />
+              <PosterSlider className="object-cover w-full h-full" />
             </motion.div>
 
-            {/* Events List (Right Side) */}
+            {/* Events List */}
             <motion.div 
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
               variants={staggerContainer}
-              className="flex flex-col gap-6"
+              className="lg:col-span-7 flex flex-col gap-10"
             >
-              <motion.h2 variants={fadeUp} className="text-2xl sm:text-3xl md:text-4xl font-black text-dark-800 mb-2 leading-[1.05] uppercase break-words">
-                WHAT'S HAPPENING
-                <br />
-                <span className="text-brand-teal">IN NEWCASTLE</span>
-              </motion.h2>
-              <motion.p variants={fadeUp} className="text-dark-800/60 mb-6 text-base max-w-xl">
-                Join us at our upcoming events. Connect with the community, celebrate our culture, and be part of the movement.
-              </motion.p>
+              <motion.div variants={fadeUp}>
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-16 h-px bg-brand-teal"></div>
+                  <span className="text-brand-teal font-black tracking-[0.3em] text-[10px] uppercase">
+                    Upcoming Gatherings
+                  </span>
+                </div>
+                <h2 className="text-3xl lg:text-7xl font-black text-dark-900 leading-[0.9] uppercase tracking-tighter">
+                  WHAT'S HAPPENING <span className="text-brand-teal">IN NEWCASTLE</span>
+                </h2>
+                <p className="text-dark-800/70 text-lg mt-8 max-w-xl leading-relaxed">
+                  Join us at our upcoming events. Connect with the community, celebrate our culture, and be part of the movement.
+                </p>
+              </motion.div>
               
-              <motion.div variants={fadeUp} className="space-y-4">
+              <motion.div variants={fadeUp} className="space-y-8">
                 {/* Event Card 1 */}
-                <div className="bg-white p-6 shadow-sm border border-gray-100 relative overflow-hidden group hover:border-brand-teal transition-colors">
-                  <div className="absolute top-0 left-0 w-1 h-full bg-brand-teal"></div>
-                  <div className="flex flex-col sm:flex-row gap-6">
-                    <div className="flex flex-col justify-center items-center bg-cream p-4 min-w-[90px] text-center border border-gray-100">
-                      <span className="text-brand-teal font-black text-2xl uppercase">13</span>
-                      <span className="text-dark-800 font-bold text-xs uppercase tracking-widest">Mar</span>
-                      <span className="text-dark-800/40 font-medium text-[10px] mt-1">2026</span>
+                <div className="bg-white p-10 border border-gray-200 group hover:border-brand-teal transition-colors">
+                  <div className="flex gap-8">
+                    <div className="flex flex-col items-center bg-cream p-6 min-w-[100px] text-center border border-gray-200">
+                      <span className="text-brand-teal font-black text-4xl uppercase tracking-tighter">13</span>
+                      <span className="text-dark-900 font-black text-xs uppercase tracking-widest mt-2">Mar</span>
+                      <span className="text-dark-900/40 font-black text-[10px] mt-1">2026</span>
                     </div>
                     <div className="flex-grow">
-                      <div className="flex items-center gap-3 mb-2">
-                        <span className="px-2 py-0.5 bg-brand-teal/10 text-brand-teal text-[9px] font-bold uppercase tracking-wider">Community</span>
-                        <span className="px-2 py-0.5 bg-navy/10 text-navy text-[9px] font-bold uppercase tracking-wider">Donation / R100 Voucher</span>
+                      <div className="flex items-center gap-4 mb-6">
+                        <span className="text-[10px] font-black uppercase tracking-widest px-4 py-2 bg-navy text-white">Community</span>
+                        <span className="text-[10px] font-black uppercase tracking-widest px-4 py-2 bg-brand-teal text-navy">Donation / R100 Voucher</span>
                       </div>
-                      <h3 className="font-black text-dark-800 text-lg mb-2 uppercase group-hover:text-brand-teal transition-colors break-words">
+                      <h3 className="font-black text-dark-900 text-2xl mb-6 uppercase tracking-tight group-hover:text-brand-teal transition-colors">
                         KNAWP Event Hosted by Sphe Dlamini & Friends
                       </h3>
-                      <p className="text-dark-800/60 text-sm mb-4 leading-relaxed">
+                      <p className="text-dark-800/70 text-sm mb-8 leading-relaxed">
                         Join us for the KNAWP Event. Entry fee is a donation or an R100 voucher to buy alcohol inside. No coolerboxes allowed. Food and alcohol will be sold at the venue.
                       </p>
-                      <div className="flex flex-wrap items-center gap-4 text-xs font-medium text-dark-800/70 mb-6">
-                        <div className="flex items-center gap-1.5">
-                          <Clock className="w-3.5 h-3.5 text-brand-teal" />
+                      <div className="flex flex-wrap items-center gap-6 text-[10px] font-black text-dark-900 uppercase tracking-widest mb-10">
+                        <div className="flex items-center gap-2">
+                          <Clock className="w-4 h-4 text-brand-teal" />
                           Friday
                         </div>
-                        <div className="flex items-center gap-1.5">
-                          <MapPin className="w-3.5 h-3.5 text-brand-teal" />
+                        <div className="flex items-center gap-2">
+                          <MapPin className="w-4 h-4 text-brand-teal" />
                           Afro Bowl, Madadeni Sec 6
                         </div>
                       </div>
                       
-                      <div className="flex flex-wrap gap-3 items-center">
-                        <a href="mailto:info@keepnnalive.co.za?subject=RSVP%20KNAWP%20Event" className="inline-flex items-center justify-center gap-2 bg-brand-teal text-white font-bold text-xs uppercase tracking-wider px-5 py-2.5 rounded-none hover:bg-navy transition-colors text-center">
+                      <div className="flex flex-wrap gap-4">
+                        <a href="mailto:info@keepnnalive.co.za?subject=RSVP%20KNAWP%20Event" className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-brand-teal text-navy font-black text-xs uppercase tracking-widest hover:bg-navy hover:text-white transition-all duration-300">
                           RSVP
                         </a>
-                        <Link to="/volunteer" className="inline-flex items-center justify-center gap-2 bg-navy text-white font-bold text-xs uppercase tracking-wider px-5 py-2.5 rounded-none hover:bg-brand-teal transition-colors text-center">
+                        <Link to="/volunteer" className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-navy text-white font-black text-xs uppercase tracking-widest hover:bg-brand-teal hover:text-navy transition-all duration-300">
                           Volunteer
                         </Link>
                       </div>
                       
-                      <div className="mt-5 pt-5 border-t border-gray-100">
-                        <p className="text-dark-800/80 text-sm mb-3 font-medium">Can't make it to the event? You can still support the movement.</p>
-                        <Link to="/donate" className="inline-flex items-center justify-center gap-2 bg-cream text-brand-teal border border-brand-teal font-bold text-xs uppercase tracking-wider px-5 py-2.5 rounded-none hover:bg-brand-teal hover:text-white transition-colors text-center">
-                          Donate Instead <ArrowRight className="w-3.5 h-3.5" />
+                      <div className="mt-10 pt-8 border-t border-gray-200">
+                        <p className="text-dark-900 text-sm mb-6 font-black uppercase tracking-tight">Can't make it to the event? You can still support the movement.</p>
+                        <Link to="/donate" className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-cream text-brand-teal border border-brand-teal font-black text-xs uppercase tracking-widest hover:bg-brand-teal hover:text-navy transition-all duration-300">
+                          Donate Instead <ArrowRight className="w-4 h-4" />
                         </Link>
                       </div>
                     </div>
@@ -107,14 +112,14 @@ export default function Events() {
                 </div>
 
                 {/* Event Card 2 (Placeholder) */}
-                <div className="bg-cream p-6 border border-gray-200 border-dashed relative overflow-hidden">
-                  <div className="flex flex-col sm:flex-row gap-6 items-center justify-center text-center sm:text-left opacity-60">
-                    <div className="w-12 h-12 bg-gray-200 flex items-center justify-center shrink-0">
-                      <Calendar className="w-5 h-5 text-gray-400" />
+                <div className="bg-cream p-10 border border-gray-200 border-dashed">
+                  <div className="flex gap-8 items-center opacity-60">
+                    <div className="w-20 h-20 bg-gray-200 flex items-center justify-center shrink-0">
+                      <Calendar className="w-8 h-8 text-gray-400" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-dark-800 text-base uppercase mb-1">More Events Coming Soon</h3>
-                      <p className="text-dark-800/60 text-xs">We are busy planning our next gatherings. Check back later or follow our social media for updates.</p>
+                      <h3 className="font-black text-dark-900 text-xl uppercase tracking-tight mb-2">More Events Coming Soon</h3>
+                      <p className="text-dark-800/70 text-sm">We are busy planning our next gatherings. Check back later or follow our social media for updates.</p>
                     </div>
                   </div>
                 </div>

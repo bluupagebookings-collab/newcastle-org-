@@ -75,21 +75,24 @@ export default function Programs() {
       <Header />
       <PageHero title="Programs" subtitle="Empowering Newcastle" image="https://i.ibb.co/XfB6zrvd/Reskill-Group-Huddle.jpg" />
 
-      <main className="flex-grow py-16 sm:py-24 lg:py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16">
+      <main className="flex-grow py-24 lg:py-32">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16">
           <motion.div 
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
-            className="mb-16 sm:mb-20 text-center"
+            className="mb-20"
           >
-            <motion.h2 variants={fadeUp} className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-dark-800 leading-[1.05] uppercase break-words">
-              BUILDING FUTURES <span className="text-brand-teal">ACROSS NEWCASTLE</span>
+            <motion.div variants={fadeUp} className="flex items-center gap-4 mb-6">
+              <div className="w-16 h-px bg-brand-teal"></div>
+              <span className="text-brand-teal font-black tracking-[0.3em] text-[10px] uppercase">
+                Our Initiatives
+              </span>
+            </motion.div>
+            <motion.h2 variants={fadeUp} className="text-3xl lg:text-7xl font-black text-dark-900 leading-[0.9] uppercase tracking-tighter">
+              ENGINEERING <span className="text-brand-teal">FUTURES</span>
             </motion.h2>
-            <motion.p variants={fadeUp} className="text-dark-800/60 mt-6 max-w-2xl mx-auto text-lg">
-              Our structured programs are designed to provide tangible skills, mentorship, and support to the community. We focus on long-term growth and self-reliance.
-            </motion.p>
           </motion.div>
 
           <motion.div 
@@ -97,40 +100,32 @@ export default function Programs() {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
-            className="grid lg:grid-cols-2 gap-8"
+            className="grid md:grid-cols-2 gap-8"
           >
             {programs.map((program, idx) => (
               <motion.div 
                 key={idx} 
                 variants={fadeUp} 
-                className={`flex flex-col h-full p-8 sm:p-10 rounded-3xl border transition-all duration-300 hover:shadow-xl ${program.active ? 'bg-[#faf8f5] border-brand-teal/30 shadow-md' : 'bg-white border-gray-100 hover:border-brand-teal/20'}`}
+                className={`group p-10 border ${program.active ? 'bg-navy text-white' : 'bg-cream border-gray-200'} transition-all duration-500 hover:border-brand-teal`}
               >
-                <div className="flex items-start justify-between gap-4 mb-6">
-                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 ${program.active ? 'bg-brand-teal text-white' : 'bg-gray-100 text-gray-500'}`}>
-                    <program.icon className="w-7 h-7" />
-                  </div>
-                  <span className={`text-[10px] font-bold uppercase tracking-widest px-4 py-2 rounded-full whitespace-nowrap ${program.active ? 'bg-navy text-white shadow-sm' : 'bg-gray-100 text-gray-500'}`}>
+                <div className="flex items-center justify-between mb-8">
+                  <span className={`text-[10px] font-black uppercase tracking-widest px-4 py-2 ${program.active ? 'bg-brand-teal text-navy' : 'bg-gray-200 text-gray-600'}`}>
                     {program.status}
                   </span>
+                  <span className="text-4xl font-black opacity-20">0{idx + 1}</span>
                 </div>
-                
-                <div className="mb-4">
-                  <span className="text-brand-teal text-[10px] font-bold uppercase tracking-wider mb-2 block">{program.category}</span>
-                  <h3 className="text-xl sm:text-2xl font-black text-dark-800 uppercase tracking-wide break-words">{program.title}</h3>
-                </div>
-                
-                <p className="text-base text-dark-800/70 leading-relaxed flex-grow mb-8">
+                <h4 className="text-2xl font-black uppercase tracking-tight mb-4 group-hover:text-brand-teal transition-colors">{program.title}</h4>
+                <p className={`text-sm leading-relaxed mb-8 ${program.active ? 'text-white/70' : 'text-dark-800/70'}`}>
                   {program.desc}
                 </p>
-                
-                <div className="grid grid-cols-1 xs:grid-cols-2 gap-4 pt-6 border-t border-gray-200/60 mt-auto">
+                <div className="grid grid-cols-2 gap-4 pt-8 border-t border-white/10">
                   <div>
-                    <span className="block text-[10px] text-dark-800/40 font-bold uppercase tracking-wider mb-1">Duration</span>
-                    <span className="block text-sm font-medium text-dark-800">{program.duration}</span>
+                    <span className="block text-[10px] text-brand-teal font-black uppercase tracking-widest mb-1">Duration</span>
+                    <span className="block text-sm font-medium">{program.duration}</span>
                   </div>
                   <div>
-                    <span className="block text-[10px] text-dark-800/40 font-bold uppercase tracking-wider mb-1">Target Audience</span>
-                    <span className="block text-sm font-medium text-dark-800">{program.audience}</span>
+                    <span className="block text-[10px] text-brand-teal font-black uppercase tracking-widest mb-1">Audience</span>
+                    <span className="block text-sm font-medium">{program.audience}</span>
                   </div>
                 </div>
               </motion.div>
@@ -140,21 +135,18 @@ export default function Programs() {
           <motion.div 
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-100px" }}
             variants={fadeUp}
-            className="mt-20 bg-navy rounded-3xl p-8 sm:p-12 text-center relative overflow-hidden"
+            className="mt-20 bg-navy p-12 text-center"
           >
-            <div className="absolute top-0 right-0 w-64 h-64 bg-brand-teal/20 rounded-full blur-[80px]"></div>
-            <div className="relative z-10">
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-white uppercase mb-4 break-words">Want to facilitate a program?</h3>
-              <p className="text-white/70 max-w-2xl mx-auto mb-8">
-                We are always looking for skilled professionals, teachers, and mentors in Newcastle who want to give back by leading or assisting with our programs.
-              </p>
-              <Link className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-brand-teal text-white font-bold text-sm uppercase tracking-wider rounded-none hover:bg-white hover:text-navy transition-colors duration-300 shadow-lg" to="/volunteer">
-                Become a Facilitator
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
+            <h3 className="text-3xl font-black text-white uppercase tracking-tighter mb-6">Want to facilitate a program?</h3>
+            <p className="text-white/70 max-w-2xl mx-auto mb-10 text-lg">
+              We are always looking for skilled professionals, teachers, and mentors in Newcastle who want to give back by leading or assisting with our programs.
+            </p>
+            <Link className="inline-flex items-center justify-center gap-3 px-10 py-5 bg-brand-teal text-navy font-black text-xs uppercase tracking-widest hover:bg-white transition-all duration-300" to="/volunteer">
+              Become a Facilitator
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </motion.div>
         </div>
       </main>

@@ -88,7 +88,7 @@ export default function Home() {
               <motion.p variants={fadeUp} className="text-white/80 text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed font-light mb-8 sm:mb-10">
                 A new community movement dedicated to uplifting lives, unlocking opportunities, and bringing people together through meaningful events, support, and empowerment programs.
               </motion.p>
-              <motion.div variants={fadeUp} className="flex flex-wrap gap-3 sm:gap-4">
+              <motion.div variants={fadeUp} className="flex flex-wrap gap-3 sm:gap-4 mb-16">
                 <Link className="group inline-flex items-center justify-center gap-3 px-7 sm:px-9 py-3.5 sm:py-4 bg-brand-teal text-white font-bold text-xs sm:text-sm uppercase tracking-wider rounded-none hover:bg-white hover:text-navy transition-colors duration-300 w-fit" to="/donate">
                   Support Our Mission
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -96,6 +96,21 @@ export default function Home() {
                 <Link className="inline-flex items-center justify-center gap-3 px-7 sm:px-9 py-3.5 sm:py-4 border border-white/30 text-white font-bold text-xs sm:text-sm uppercase tracking-wider rounded-none hover:border-white hover:bg-white/10 transition-colors duration-300 w-fit" to="/volunteer">
                   Become a Volunteer
                 </Link>
+              </motion.div>
+
+              <motion.div variants={fadeUp} className="grid grid-cols-1 sm:grid-cols-3 gap-8 pt-10 border-t border-white/20">
+                <div>
+                  <div className="text-4xl font-black text-white uppercase tracking-tighter">01</div>
+                  <div className="text-brand-teal text-[10px] uppercase tracking-widest font-black mt-2">Initiative Launched</div>
+                </div>
+                <div>
+                  <div className="text-4xl font-black text-white uppercase tracking-tighter">100%</div>
+                  <div className="text-brand-teal text-[10px] uppercase tracking-widest font-black mt-2">Newcastle Focused</div>
+                </div>
+                <div>
+                  <div className="text-4xl font-black text-white uppercase tracking-tighter">ACTIVE</div>
+                  <div className="text-brand-teal text-[10px] uppercase tracking-widest font-black mt-2">Volunteer Network</div>
+                </div>
               </motion.div>
             </motion.div>
           </div>
@@ -125,7 +140,9 @@ export default function Home() {
               </div>
               <div className="border-l-2 border-brand-teal pl-5 mb-8">
                 <p className="font-signature text-3xl text-dark-800">Sphe Dlamini</p>
-                <p className="text-dark-800/40 text-[10px] uppercase tracking-[0.2em] mt-1">Founder & Director</p>
+                <p className="text-brand-teal text-[10px] uppercase tracking-[0.2em] mt-1">
+                  Director
+                </p>
               </div>
             </motion.div>
           </motion.div>
@@ -325,7 +342,7 @@ export default function Home() {
             </motion.h2>
           </motion.div>
 
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="grid lg:grid-cols-3 gap-8 lg:gap-12">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="grid lg:grid-cols-3 gap-10">
             {[
               {
                 id: 1,
@@ -348,43 +365,35 @@ export default function Home() {
                 excerpt: "Demonstrating the power of collective action, KNAWP's recent community food and clothing drive successfully provided essential supplies to over 50 families...",
                 image: "https://i.ibb.co/0yBNCPCP/rnb-gathering-1772031387245.png"
               }
-            ].map((article) => {
-              return (
-                <motion.article key={article.id} variants={fadeUp} className="bg-cream border border-gray-200 flex flex-col h-full shadow-sm hover:shadow-xl transition-shadow duration-300">
-                  <div className="relative aspect-[16/9] overflow-hidden">
-                    <img 
-                      src={article.image} 
-                      alt={article.heading} 
-                      className="object-cover object-top w-full h-full transition-transform duration-700 hover:scale-105"
-                      referrerPolicy="no-referrer"
-                    />
+            ].map((article) => (
+              <motion.article key={article.id} variants={fadeUp} className="bg-white border border-gray-200 group hover:border-brand-teal transition-colors duration-300 flex flex-col h-full">
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <img 
+                    src={article.image} 
+                    alt={article.heading} 
+                    className="object-cover object-top w-full h-full transition-transform duration-700 group-hover:scale-105"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                <div className="p-10 flex flex-col flex-grow">
+                  <div className="text-[10px] font-black text-brand-teal uppercase tracking-widest mb-6">
+                    {article.dateline}
                   </div>
-                  <div className="p-6 sm:p-8 flex flex-col flex-grow">
-                    <div className="mb-4">
-                      <span className="text-brand-teal text-[10px] font-bold uppercase tracking-[0.2em] block mb-1">
-                        {article.dateline}
-                      </span>
-                    </div>
-                    
-                    <h3 className="text-xl sm:text-2xl font-black text-navy leading-tight mb-4 uppercase break-words">
-                      {article.heading}
-                    </h3>
-                    
-                    <div className="text-navy/80 text-sm leading-relaxed space-y-4 flex-grow">
-                      <p>
-                        {article.excerpt}
-                      </p>
-                    </div>
-                    
-                    <div className="mt-8 pt-6 border-t border-gray-200 flex flex-wrap items-center justify-between gap-4">
-                      <Link to={`/blog/${article.id}`} className="inline-flex items-center gap-2 text-brand-teal font-bold text-xs uppercase tracking-wider hover:text-navy transition-colors">
-                        Read More <ArrowRight className="w-4 h-4" />
-                      </Link>
-                    </div>
-                  </div>
-                </motion.article>
-              );
-            })}
+                  
+                  <h3 className="text-2xl font-black text-dark-900 mb-6 leading-tight group-hover:text-brand-teal transition-colors uppercase tracking-tight">
+                    {article.heading}
+                  </h3>
+                  
+                  <p className="text-dark-800/70 text-sm leading-relaxed mb-10 flex-grow">
+                    {article.excerpt}
+                  </p>
+                  
+                  <Link to={`/blog/${article.id}`} className="inline-flex items-center gap-3 text-brand-teal font-black text-xs uppercase tracking-widest hover:text-navy transition-all duration-300 mt-auto w-fit">
+                    Read Article <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
+              </motion.article>
+            ))}
           </motion.div>
 
           <motion.div 
