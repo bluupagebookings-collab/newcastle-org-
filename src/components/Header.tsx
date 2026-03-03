@@ -139,12 +139,12 @@ export default function Header() {
             exit={{ opacity: 0, y: -10 }}
             className="lg:hidden absolute top-full left-0 right-0 bg-white border-b border-navy/10 shadow-xl py-4 px-6 flex flex-col gap-4"
           >
-            <Link to="/about" onClick={() => setIsMobileMenuOpen(false)} className={`text-xs font-bold tracking-wider py-2 border-b border-gray-100 ${isActive('/about') ? 'text-brand-teal' : 'text-navy'}`}>ABOUT</Link>
-            <Link to="/pillars" onClick={() => setIsMobileMenuOpen(false)} className={`text-xs font-bold tracking-wider py-2 border-b border-gray-100 ${isActive('/pillars') ? 'text-brand-teal' : 'text-navy'}`}>PILLARS</Link>
-            <Link to="/programs" onClick={() => setIsMobileMenuOpen(false)} className={`text-xs font-bold tracking-wider py-2 border-b border-gray-100 ${isActive('/programs') ? 'text-brand-teal' : 'text-navy'}`}>PROGRAMS</Link>
-            <Link to="/events" onClick={() => setIsMobileMenuOpen(false)} className={`text-xs font-bold tracking-wider py-2 border-b border-gray-100 ${isActive('/events') ? 'text-brand-teal' : 'text-navy'}`}>EVENTS</Link>
-            <Link to="/volunteer" onClick={() => setIsMobileMenuOpen(false)} className={`text-xs font-bold tracking-wider py-2 border-b border-gray-100 ${isActive('/volunteer') ? 'text-brand-teal' : 'text-navy'}`}>VOLUNTEER</Link>
-            <Link to="/blog" onClick={() => setIsMobileMenuOpen(false)} className={`text-xs font-bold tracking-wider py-2 border-b border-gray-100 ${isActive('/blog') ? 'text-brand-teal' : 'text-navy'}`}>BLOG</Link>
+            <Link to="/about" onClick={() => setIsMobileMenuOpen(false)} className={`text-xs font-bold tracking-wider py-2 ${isActive('/about') ? 'text-brand-teal' : 'text-navy'}`}>ABOUT</Link>
+            <Link to="/pillars" onClick={() => setIsMobileMenuOpen(false)} className={`text-xs font-bold tracking-wider py-2 ${isActive('/pillars') ? 'text-brand-teal' : 'text-navy'}`}>PILLARS</Link>
+            <Link to="/programs" onClick={() => setIsMobileMenuOpen(false)} className={`text-xs font-bold tracking-wider py-2 ${isActive('/programs') ? 'text-brand-teal' : 'text-navy'}`}>PROGRAMS</Link>
+            <Link to="/events" onClick={() => setIsMobileMenuOpen(false)} className={`text-xs font-bold tracking-wider py-2 ${isActive('/events') ? 'text-brand-teal' : 'text-navy'}`}>EVENTS</Link>
+            <Link to="/volunteer" onClick={() => setIsMobileMenuOpen(false)} className={`text-xs font-bold tracking-wider py-2 ${isActive('/volunteer') ? 'text-brand-teal' : 'text-navy'}`}>VOLUNTEER</Link>
+            <Link to="/blog" onClick={() => setIsMobileMenuOpen(false)} className={`text-xs font-bold tracking-wider py-2 ${isActive('/blog') ? 'text-brand-teal' : 'text-navy'}`}>BLOG</Link>
             <Link to="/donate" onClick={() => setIsMobileMenuOpen(false)} className="text-xs font-bold tracking-wider text-white bg-brand-teal text-center py-3 rounded-none mt-2 uppercase">DONATE</Link>
           </motion.div>
         )}
