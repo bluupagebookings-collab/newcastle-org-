@@ -55,16 +55,16 @@ export default function Home() {
   return (
     <>
       {/* 1. Hero Section */}
-      <section className="relative h-[100svh] min-h-[600px] overflow-hidden bg-white -mt-20 sm:-mt-24">
-        <div className="absolute inset-0 bg-white">
+      <section className="relative h-[100svh] min-h-[600px] overflow-hidden bg-navy -mt-20 sm:-mt-24">
+        <div className="absolute inset-0 bg-navy">
           <img
             alt="Hero slide"
-            className="object-cover object-center w-full h-full absolute inset-0 opacity-20"
+            className="object-cover object-center w-full h-full absolute inset-0 opacity-50"
             src="https://i.ibb.co/0yBNCPCP/rnb-gathering-1772031387245.png"
             referrerPolicy="no-referrer"
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/40 to-transparent z-10"></div>
         
         <div className="absolute inset-0 z-20 flex items-center justify-center pt-16 sm:pt-20">
           <div className="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-20">
@@ -81,55 +81,40 @@ export default function Home() {
                 </span>
               </motion.div>
               <motion.div variants={fadeUp} className="overflow-hidden mb-4 sm:mb-6">
-                <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-navy tracking-tight leading-[1.05] sm:leading-[1] uppercase break-words">
+                <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white tracking-tight leading-[1.05] sm:leading-[1] uppercase break-words">
                   KEEP NEWCASTLE ALIVE WITH POSSIBILITIES
                 </h1>
               </motion.div>
-              <motion.p variants={fadeUp} className="text-navy/80 text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed font-light mb-8 sm:mb-10">
+              <motion.p variants={fadeUp} className="text-white/80 text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed font-light mb-8 sm:mb-10">
                 A new community movement dedicated to uplifting lives, unlocking opportunities, and bringing people together through meaningful events, support, and empowerment programs.
               </motion.p>
-              <motion.div variants={fadeUp} className="flex flex-wrap gap-3 sm:gap-4 mb-16">
-                <Link className="group inline-flex items-center justify-center gap-3 px-7 sm:px-9 py-3.5 sm:py-4 bg-brand-teal text-white font-bold text-xs sm:text-sm uppercase tracking-wider rounded-none hover:bg-navy transition-colors duration-300 w-fit" to="/donate">
+              <motion.div variants={fadeUp} className="flex flex-wrap gap-3 sm:gap-4">
+                <Link className="group inline-flex items-center justify-center gap-3 px-7 sm:px-9 py-3.5 sm:py-4 bg-brand-teal text-white font-bold text-xs sm:text-sm uppercase tracking-wider rounded-none hover:bg-white hover:text-navy transition-colors duration-300 w-fit" to="/donate">
                   Support Our Mission
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <Link className="inline-flex items-center justify-center gap-3 px-7 sm:px-9 py-3.5 sm:py-4 border border-navy/30 text-navy font-bold text-xs sm:text-sm uppercase tracking-wider rounded-none hover:border-navy hover:bg-navy/10 transition-colors duration-300 w-fit" to="/volunteer">
+                <Link className="inline-flex items-center justify-center gap-3 px-7 sm:px-9 py-3.5 sm:py-4 border border-white/30 text-white font-bold text-xs sm:text-sm uppercase tracking-wider rounded-none hover:border-white hover:bg-white/10 transition-colors duration-300 w-fit" to="/volunteer">
                   Become a Volunteer
                 </Link>
-              </motion.div>
-
-              <motion.div variants={fadeUp} className="grid grid-cols-1 sm:grid-cols-3 gap-8 pt-10 border-t border-navy/20">
-                <div>
-                  <div className="text-4xl font-black text-navy uppercase tracking-tighter">50+</div>
-                  <div className="text-brand-teal text-[10px] uppercase tracking-widest font-black mt-2">Community Engagements</div>
-                </div>
-                <div>
-                  <div className="text-4xl font-black text-navy uppercase tracking-tighter">1.2k</div>
-                  <div className="text-brand-teal text-[10px] uppercase tracking-widest font-black mt-2">Lives Touched</div>
-                </div>
-                <div>
-                  <div className="text-4xl font-black text-navy uppercase tracking-tighter">2026</div>
-                  <div className="text-brand-teal text-[10px] uppercase tracking-widest font-black mt-2">Founded</div>
-                </div>
               </motion.div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* 2. Director Section */}
+      {/* 2. Founder Section */}
       <section className="relative bg-cream overflow-hidden py-16 sm:py-24 lg:py-32">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-16">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
             <motion.div variants={fadeUp} className="lg:col-span-5 relative px-4 sm:px-0">
               <div className="relative aspect-[3/4] rounded-none overflow-hidden shadow-2xl">
-                <img alt="Sphe Dlamini, Director" className="object-cover object-top w-full h-full" src="https://i.ibb.co/ksHdb78G/IMG-5383-2.jpg" referrerPolicy="no-referrer" />
+                <img alt="Sphe Dlamini, Founder" className="object-cover object-top w-full h-full" src="https://i.ibb.co/ksHdb78G/IMG-5383-2.jpg" referrerPolicy="no-referrer" />
               </div>
             </motion.div>
             <motion.div variants={fadeUp} className="lg:col-span-6 lg:col-start-7">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-12 h-px bg-brand-teal"></div>
-                <span className="text-brand-teal font-bold tracking-[0.25em] text-[10px] uppercase">The Director</span>
+                <span className="text-brand-teal font-bold tracking-[0.25em] text-[10px] uppercase">The Founder</span>
               </div>
               <h2 className="text-4xl xl:text-5xl font-black text-dark-800 mb-8 leading-[1.05] uppercase break-words">
                 EVERY RESIDENT DESERVES <br /><span className="text-brand-teal">ACCESS TO OPPORTUNITY</span>
@@ -140,9 +125,7 @@ export default function Home() {
               </div>
               <div className="border-l-2 border-brand-teal pl-5 mb-8">
                 <p className="font-signature text-3xl text-dark-800">Sphe Dlamini</p>
-                <p className="text-brand-teal text-[10px] uppercase tracking-[0.2em] mt-1">
-                  Director
-                </p>
+                <p className="text-dark-800/40 text-[10px] uppercase tracking-[0.2em] mt-1">Founder & Director</p>
               </div>
             </motion.div>
           </motion.div>
@@ -150,27 +133,27 @@ export default function Home() {
       </section>
 
       {/* 3. 3 Pillars Section */}
-      <section className="py-16 sm:py-24 bg-cream text-navy">
+      <section className="py-16 sm:py-24 bg-dark-900 text-white">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-black uppercase mb-4">Three Pillars of <span className="text-brand-teal">Change</span></h2>
             <div className="w-16 h-1 bg-brand-teal mx-auto"></div>
           </motion.div>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="grid md:grid-cols-3 gap-8">
-            <motion.div variants={fadeUp} className="bg-white p-8 border-t-4 border-brand-teal hover:bg-brand-teal/5 transition-colors">
+            <motion.div variants={fadeUp} className="bg-white/5 p-8 border-t-4 border-brand-teal hover:bg-white/10 transition-colors">
               <h3 className="text-2xl font-black uppercase mb-4">Community Events</h3>
-              <p className="text-navy/70 text-sm leading-relaxed mb-6">Bringing people together to celebrate local culture, foster unity, and create safe spaces for youth engagement.</p>
-              <Link to="/pillars" className="text-brand-teal font-bold text-[10px] uppercase tracking-wider hover:text-navy transition-colors">Learn More &rarr;</Link>
+              <p className="text-white/70 text-sm leading-relaxed mb-6">Bringing people together to celebrate local culture, foster unity, and create safe spaces for youth engagement.</p>
+              <Link to="/pillars" className="text-brand-teal font-bold text-[10px] uppercase tracking-wider hover:text-white transition-colors">Learn More &rarr;</Link>
             </motion.div>
-            <motion.div variants={fadeUp} className="bg-white p-8 border-t-4 border-brand-teal hover:bg-brand-teal/5 transition-colors">
+            <motion.div variants={fadeUp} className="bg-white/5 p-8 border-t-4 border-brand-teal hover:bg-white/10 transition-colors">
               <h3 className="text-2xl font-black uppercase mb-4">Support Initiatives</h3>
-              <p className="text-navy/70 text-sm leading-relaxed mb-6">Providing direct assistance, food security, and emergency relief to vulnerable individuals and families in Newcastle.</p>
-              <Link to="/pillars" className="text-brand-teal font-bold text-[10px] uppercase tracking-wider hover:text-navy transition-colors">Learn More &rarr;</Link>
+              <p className="text-white/70 text-sm leading-relaxed mb-6">Providing direct assistance, food security, and emergency relief to vulnerable individuals and families in Newcastle.</p>
+              <Link to="/pillars" className="text-brand-teal font-bold text-[10px] uppercase tracking-wider hover:text-white transition-colors">Learn More &rarr;</Link>
             </motion.div>
-            <motion.div variants={fadeUp} className="bg-white p-8 border-t-4 border-brand-teal hover:bg-brand-teal/5 transition-colors">
+            <motion.div variants={fadeUp} className="bg-white/5 p-8 border-t-4 border-brand-teal hover:bg-white/10 transition-colors">
               <h3 className="text-2xl font-black uppercase mb-4">Empowerment Programs</h3>
-              <p className="text-navy/70 text-sm leading-relaxed mb-6">Equipping residents with skills development, mentorship, and career readiness to turn potential into tangible outcomes.</p>
-              <Link to="/pillars" className="text-brand-teal font-bold text-[10px] uppercase tracking-wider hover:text-navy transition-colors">Learn More &rarr;</Link>
+              <p className="text-white/70 text-sm leading-relaxed mb-6">Equipping residents with skills development, mentorship, and career readiness to turn potential into tangible outcomes.</p>
+              <Link to="/pillars" className="text-brand-teal font-bold text-[10px] uppercase tracking-wider hover:text-white transition-colors">Learn More &rarr;</Link>
             </motion.div>
           </motion.div>
         </div>
@@ -342,7 +325,7 @@ export default function Home() {
             </motion.h2>
           </motion.div>
 
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="grid lg:grid-cols-3 gap-10">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="grid lg:grid-cols-3 gap-8 lg:gap-12">
             {[
               {
                 id: 1,
@@ -365,35 +348,43 @@ export default function Home() {
                 excerpt: "Demonstrating the power of collective action, KNAWP's recent community food and clothing drive successfully provided essential supplies to over 50 families...",
                 image: "https://i.ibb.co/0yBNCPCP/rnb-gathering-1772031387245.png"
               }
-            ].map((article) => (
-              <motion.article key={article.id} variants={fadeUp} className="bg-white border border-gray-200 group hover:border-brand-teal transition-colors duration-300 flex flex-col h-full">
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <img 
-                    src={article.image} 
-                    alt={article.heading} 
-                    className="object-cover object-top w-full h-full transition-transform duration-700 group-hover:scale-105"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-                <div className="p-10 flex flex-col flex-grow">
-                  <div className="text-[10px] font-black text-brand-teal uppercase tracking-widest mb-6">
-                    {article.dateline}
+            ].map((article) => {
+              return (
+                <motion.article key={article.id} variants={fadeUp} className="bg-cream border border-gray-200 flex flex-col h-full shadow-sm hover:shadow-xl transition-shadow duration-300">
+                  <div className="relative aspect-[16/9] overflow-hidden">
+                    <img 
+                      src={article.image} 
+                      alt={article.heading} 
+                      className="object-cover object-top w-full h-full transition-transform duration-700 hover:scale-105"
+                      referrerPolicy="no-referrer"
+                    />
                   </div>
-                  
-                  <h3 className="text-2xl font-black text-dark-900 mb-6 leading-tight group-hover:text-brand-teal transition-colors uppercase tracking-tight">
-                    {article.heading}
-                  </h3>
-                  
-                  <p className="text-dark-800/70 text-sm leading-relaxed mb-10 flex-grow">
-                    {article.excerpt}
-                  </p>
-                  
-                  <Link to={`/blog/${article.id}`} className="inline-flex items-center gap-3 text-brand-teal font-black text-xs uppercase tracking-widest hover:text-navy transition-all duration-300 mt-auto w-fit">
-                    Read Article <ArrowRight className="w-4 h-4" />
-                  </Link>
-                </div>
-              </motion.article>
-            ))}
+                  <div className="p-6 sm:p-8 flex flex-col flex-grow">
+                    <div className="mb-4">
+                      <span className="text-brand-teal text-[10px] font-bold uppercase tracking-[0.2em] block mb-1">
+                        {article.dateline}
+                      </span>
+                    </div>
+                    
+                    <h3 className="text-xl sm:text-2xl font-black text-navy leading-tight mb-4 uppercase break-words">
+                      {article.heading}
+                    </h3>
+                    
+                    <div className="text-navy/80 text-sm leading-relaxed space-y-4 flex-grow">
+                      <p>
+                        {article.excerpt}
+                      </p>
+                    </div>
+                    
+                    <div className="mt-8 pt-6 border-t border-gray-200 flex flex-wrap items-center justify-between gap-4">
+                      <Link to={`/blog/${article.id}`} className="inline-flex items-center gap-2 text-brand-teal font-bold text-xs uppercase tracking-wider hover:text-navy transition-colors">
+                        Read More <ArrowRight className="w-4 h-4" />
+                      </Link>
+                    </div>
+                  </div>
+                </motion.article>
+              );
+            })}
           </motion.div>
 
           <motion.div 

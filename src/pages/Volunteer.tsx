@@ -29,8 +29,8 @@ export default function Volunteer() {
       <Header />
       <PageHero title="Volunteer" subtitle="Join The Movement" />
 
-      <main className="flex-grow py-24 lg:py-32">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16">
+      <main className="flex-grow py-16 sm:py-24 lg:py-32">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16">
           
           {/* Why Volunteer Section */}
           <motion.div 
@@ -38,18 +38,12 @@ export default function Volunteer() {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
-            className="mb-24"
+            className="text-center mb-16 sm:mb-24"
           >
-            <motion.div variants={fadeUp} className="flex items-center gap-4 mb-6">
-              <div className="w-16 h-px bg-brand-teal"></div>
-              <span className="text-brand-teal font-black tracking-[0.3em] text-[10px] uppercase">
-                Join The Movement
-              </span>
-            </motion.div>
-            <motion.h2 variants={fadeUp} className="text-3xl lg:text-7xl font-black text-dark-900 leading-[0.9] uppercase tracking-tighter mb-10">
+            <motion.h2 variants={fadeUp} className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-dark-800 leading-[1.05] uppercase break-words">
               BE THE CHANGE IN <span className="text-brand-teal">NEWCASTLE</span>
             </motion.h2>
-            <motion.p variants={fadeUp} className="text-dark-800/70 text-lg max-w-2xl leading-relaxed">
+            <motion.p variants={fadeUp} className="text-dark-800/60 mt-6 max-w-2xl mx-auto text-lg">
               Volunteers are the heartbeat of KNAWP. By giving your time and skills, you directly impact the lives of people in our community.
             </motion.p>
           </motion.div>
@@ -59,37 +53,37 @@ export default function Volunteer() {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-32"
+            className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-24"
           >
             {[
-              { icon: HeartHandshake, title: "Make an Impact", desc: "Be part of the movement from day one." },
-              { icon: Users, title: "Connect", desc: "Collaborate with community-minded people." },
-              { icon: Award, title: "Grow", desc: "Gain experience and new skills." },
-              { icon: Sparkles, title: "Flexible", desc: "Contribute in ways that fit your schedule." }
+              { icon: HeartHandshake, title: "Make an Impact", desc: "Be part of the movement from day one and see the tangible difference you make." },
+              { icon: Users, title: "Connect", desc: "Meet and collaborate with passionate, community-minded people across Newcastle." },
+              { icon: Award, title: "Grow", desc: "Gain experience, develop new skills, and receive an official certificate of service." },
+              { icon: Sparkles, title: "Flexible", desc: "Contribute in ways that fit your schedule and leverage your unique talents." }
             ].map((item, idx) => (
-              <motion.div key={idx} variants={fadeUp} className="bg-white p-10 border border-gray-200 hover:border-brand-teal transition-colors">
-                <div className="w-20 h-20 bg-navy rounded-full flex items-center justify-center mb-8 text-brand-teal">
-                  <item.icon className="w-10 h-10" strokeWidth={1} />
+              <motion.div key={idx} variants={fadeUp} className="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div className="w-14 h-14 bg-brand-teal/10 rounded-2xl flex items-center justify-center mb-6">
+                  <item.icon className="w-7 h-7 text-brand-teal" />
                 </div>
-                <h4 className="font-black text-dark-900 mb-4 uppercase tracking-tight text-xl">{item.title}</h4>
-                <p className="text-sm text-dark-800/70 leading-relaxed">{item.desc}</p>
+                <h4 className="font-black text-dark-800 mb-3 uppercase text-base sm:text-lg break-words">{item.title}</h4>
+                <p className="text-sm text-dark-800/60 leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
           </motion.div>
 
           {/* Application Form Section */}
-          <div className="grid lg:grid-cols-12 gap-16 items-start">
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             <motion.div 
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
               variants={fadeUp}
-              className="lg:col-span-5 relative aspect-[4/5] bg-navy flex flex-col items-center justify-center border border-white/10 p-12 text-center"
+              className="lg:col-span-5 relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl bg-navy flex flex-col items-center justify-center border border-white/10 p-8 sm:p-10 text-center"
             >
-              <HeartHandshake className="w-64 h-64 text-white/[0.03] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" strokeWidth={1} />
+              <HeartHandshake className="w-40 h-40 sm:w-64 sm:h-64 text-white/[0.03] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" strokeWidth={1} />
               <div className="relative z-10 mt-auto w-full">
-                <h3 className="text-4xl font-black text-white uppercase tracking-tighter mb-6 leading-tight">Ready to step up?</h3>
-                <p className="text-white/70 text-lg leading-relaxed">
+                <h3 className="text-2xl sm:text-3xl font-black text-white uppercase mb-4 leading-tight break-words">Ready to step up?</h3>
+                <p className="text-white/80 text-base leading-relaxed">
                   Fill out the application form and our volunteer coordinator will be in touch with you shortly to discuss how you can help.
                 </p>
               </div>
@@ -100,46 +94,46 @@ export default function Volunteer() {
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
               variants={fadeUp}
-              className="lg:col-span-7 bg-white p-12 border border-gray-200"
+              className="lg:col-span-7 bg-white p-8 sm:p-12 rounded-3xl shadow-xl border border-gray-100"
             >
-              <div className="mb-10">
-                <h3 className="text-3xl font-black text-dark-900 uppercase tracking-tighter mb-2">Volunteer Application</h3>
-                <p className="text-dark-800/70 text-sm">Tell us a bit about yourself and how you'd like to contribute.</p>
+              <div className="mb-8">
+                <h3 className="text-xl sm:text-2xl font-black text-dark-800 uppercase mb-2 break-words">Volunteer Application</h3>
+                <p className="text-dark-800/60 text-sm">Tell us a bit about yourself and how you'd like to contribute.</p>
               </div>
 
               {submitSuccess ? (
-                <div className="bg-brand-teal/10 border border-brand-teal text-navy px-10 py-12 text-center">
-                  <CheckCircle2 className="w-16 h-16 text-brand-teal mx-auto mb-6" />
-                  <h4 className="text-2xl font-black uppercase tracking-tight mb-2">Application Received!</h4>
+                <div className="bg-brand-teal/10 border border-brand-teal text-brand-teal-dark px-6 py-8 rounded-2xl text-center">
+                  <CheckCircle2 className="w-12 h-12 text-brand-teal mx-auto mb-4" />
+                  <h4 className="text-xl font-bold text-dark-800 mb-2">Application Received!</h4>
                   <p className="text-dark-800/70 text-sm">Thank you for stepping up. We will contact you soon.</p>
                 </div>
               ) : (
-                <form onSubmit={handleVolunteerSubmit} className="space-y-8">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                    <div className="space-y-3">
-                      <label className="text-[10px] font-black uppercase tracking-widest text-dark-900 block">First Name</label>
-                      <input required type="text" className="w-full bg-cream border border-gray-200 px-6 py-4 text-sm focus:outline-none focus:border-brand-teal transition-colors" placeholder="John" />
+                <form onSubmit={handleVolunteerSubmit} className="space-y-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <label className="text-[10px] font-bold uppercase tracking-wider text-navy block">First Name</label>
+                      <input required type="text" className="w-full bg-cream border border-gray-200 px-4 py-3.5 rounded-xl text-sm focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal transition-colors" placeholder="John" />
                     </div>
-                    <div className="space-y-3">
-                      <label className="text-[10px] font-black uppercase tracking-widest text-dark-900 block">Last Name</label>
-                      <input required type="text" className="w-full bg-cream border border-gray-200 px-6 py-4 text-sm focus:outline-none focus:border-brand-teal transition-colors" placeholder="Doe" />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                    <div className="space-y-3">
-                      <label className="text-[10px] font-black uppercase tracking-widest text-dark-900 block">Email Address</label>
-                      <input required type="email" className="w-full bg-cream border border-gray-200 px-6 py-4 text-sm focus:outline-none focus:border-brand-teal transition-colors" placeholder="john@example.com" />
-                    </div>
-                    <div className="space-y-3">
-                      <label className="text-[10px] font-black uppercase tracking-widest text-dark-900 block">Phone Number</label>
-                      <input required type="tel" className="w-full bg-cream border border-gray-200 px-6 py-4 text-sm focus:outline-none focus:border-brand-teal transition-colors" placeholder="082 123 4567" />
+                    <div className="space-y-2">
+                      <label className="text-[10px] font-bold uppercase tracking-wider text-navy block">Last Name</label>
+                      <input required type="text" className="w-full bg-cream border border-gray-200 px-4 py-3.5 rounded-xl text-sm focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal transition-colors" placeholder="Doe" />
                     </div>
                   </div>
 
-                  <div className="space-y-3">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-dark-900 block">Area of Interest</label>
-                    <select required defaultValue="" className="w-full bg-cream border border-gray-200 px-6 py-4 text-sm focus:outline-none focus:border-brand-teal transition-colors appearance-none">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <label className="text-[10px] font-bold uppercase tracking-wider text-navy block">Email Address</label>
+                      <input required type="email" className="w-full bg-cream border border-gray-200 px-4 py-3.5 rounded-xl text-sm focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal transition-colors" placeholder="john@example.com" />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-[10px] font-bold uppercase tracking-wider text-navy block">Phone Number</label>
+                      <input required type="tel" className="w-full bg-cream border border-gray-200 px-4 py-3.5 rounded-xl text-sm focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal transition-colors" placeholder="082 123 4567" />
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-bold uppercase tracking-wider text-navy block">Area of Interest</label>
+                    <select required defaultValue="" className="w-full bg-cream border border-gray-200 px-4 py-3.5 rounded-xl text-sm focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal transition-colors appearance-none">
                       <option value="" disabled>Select how you want to help</option>
                       <option value="events">Event Setup & Coordination</option>
                       <option value="mentorship">Mentorship & Teaching</option>
@@ -149,12 +143,12 @@ export default function Volunteer() {
                     </select>
                   </div>
 
-                  <div className="space-y-3">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-dark-900 block">Why do you want to join KNAWP?</label>
-                    <textarea required rows={4} className="w-full bg-cream border border-gray-200 px-6 py-4 text-sm focus:outline-none focus:border-brand-teal transition-colors resize-none" placeholder="Tell us a bit about yourself..."></textarea>
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-bold uppercase tracking-wider text-navy block">Why do you want to join KNAWP?</label>
+                    <textarea required rows={4} className="w-full bg-cream border border-gray-200 px-4 py-3.5 rounded-xl text-sm focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal transition-colors resize-none" placeholder="Tell us a bit about yourself..."></textarea>
                   </div>
 
-                  <button type="submit" className="w-full bg-brand-teal text-navy font-black text-xs uppercase tracking-widest py-5 hover:bg-navy hover:text-white transition-all duration-300 flex items-center justify-center gap-3">
+                  <button type="submit" className="w-full bg-brand-teal text-white font-bold text-sm uppercase tracking-wider py-4 rounded-xl hover:bg-navy transition-colors duration-300 shadow-lg flex items-center justify-center gap-2">
                     Submit Application <ArrowRight className="w-4 h-4" />
                   </button>
                 </form>

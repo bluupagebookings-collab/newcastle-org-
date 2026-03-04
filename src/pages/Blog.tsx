@@ -34,26 +34,20 @@ export default function Blog() {
       <Header />
       <PageHero title="Blog" subtitle="News & Stories" image="https://i.ibb.co/ksHdb78G/IMG-5383-2.jpg" />
 
-      <main className="flex-grow py-24 lg:py-32">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16">
+      <main className="flex-grow py-16 sm:py-24 lg:py-32">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16">
           
           <motion.div 
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
-            className="mb-24"
+            className="text-center mb-16 sm:mb-24"
           >
-            <motion.div variants={fadeUp} className="flex items-center gap-4 mb-6">
-              <div className="w-16 h-px bg-brand-teal"></div>
-              <span className="text-brand-teal font-black tracking-[0.3em] text-[10px] uppercase">
-                News & Stories
-              </span>
-            </motion.div>
-            <motion.h2 variants={fadeUp} className="text-3xl lg:text-7xl font-black text-dark-900 leading-[0.9] uppercase tracking-tighter mb-10">
+            <motion.h2 variants={fadeUp} className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-dark-800 leading-[1.05] uppercase break-words">
               LATEST <span className="text-brand-teal">UPDATES</span>
             </motion.h2>
-            <motion.p variants={fadeUp} className="text-dark-800/70 text-lg max-w-2xl leading-relaxed">
+            <motion.p variants={fadeUp} className="text-dark-800/60 mt-6 max-w-2xl mx-auto text-lg">
               Stay up to date with the latest news, stories, and announcements from Keep Newcastle Alive With Possibilities.
             </motion.p>
           </motion.div>
@@ -63,13 +57,13 @@ export default function Blog() {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-10"
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10"
           >
             {blogPosts.map((post) => (
               <motion.article 
                 key={post.id} 
                 variants={fadeUp} 
-                className="bg-white border border-gray-200 group hover:border-brand-teal transition-colors duration-300 flex flex-col h-full"
+                className="bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 group flex flex-col h-full"
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <img 
@@ -78,36 +72,36 @@ export default function Blog() {
                     className="object-cover object-top w-full h-full transition-transform duration-700 group-hover:scale-105"
                     referrerPolicy="no-referrer"
                   />
-                  <div className="absolute top-6 left-6">
-                    <span className="bg-navy text-white text-[10px] font-black uppercase tracking-widest px-4 py-2">
+                  <div className="absolute top-4 left-4">
+                    <span className="bg-brand-teal text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-none">
                       {post.category}
                     </span>
                   </div>
                 </div>
                 
-                <div className="p-10 flex flex-col flex-grow">
-                  <div className="flex items-center gap-6 text-[10px] font-black text-dark-900/40 uppercase tracking-widest mb-6">
-                    <div className="flex items-center gap-2">
-                      <Calendar className="w-4 h-4 text-brand-teal" />
+                <div className="p-6 sm:p-8 flex flex-col flex-grow">
+                  <div className="flex items-center gap-4 text-dark-800/60 text-xs font-medium mb-4">
+                    <div className="flex items-center gap-1.5">
+                      <Calendar className="w-3.5 h-3.5" />
                       {post.date}
                     </div>
-                    <div className="flex items-center gap-2">
-                      <User className="w-4 h-4 text-brand-teal" />
+                    <div className="flex items-center gap-1.5">
+                      <User className="w-3.5 h-3.5" />
                       {post.author}
                     </div>
                   </div>
                   
-                  <h3 className="text-2xl font-black text-dark-900 mb-6 leading-tight group-hover:text-brand-teal transition-colors uppercase tracking-tight">
+                  <h3 className="text-xl font-black text-dark-800 mb-3 leading-tight group-hover:text-brand-teal transition-colors">
                     {post.title}
                   </h3>
                   
-                  <p className="text-dark-800/70 text-sm leading-relaxed mb-10 flex-grow">
+                  <p className="text-dark-800/70 text-sm leading-relaxed mb-6 flex-grow">
                     {post.excerpt}
                   </p>
                   
                   <Link 
                     to={`/blog/${post.id}`} 
-                    className="inline-flex items-center gap-3 text-brand-teal font-black text-xs uppercase tracking-widest hover:text-navy transition-all duration-300 mt-auto w-fit"
+                    className="inline-flex items-center gap-2 text-brand-teal font-bold text-xs uppercase tracking-wider hover:text-navy transition-colors mt-auto w-fit"
                   >
                     Read Article <ArrowRight className="w-4 h-4" />
                   </Link>
